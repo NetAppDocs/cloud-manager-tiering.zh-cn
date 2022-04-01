@@ -1,0 +1,93 @@
+---
+sidebar: sidebar 
+permalink: whats-new.html 
+keywords: 'what"s new, features, new, release notes, bugs, limitations, known issues, enhancements, fixes, tiering' 
+summary: 了解 Cloud Tiering 的新增功能。 
+---
+= Cloud Tiering 的新增功能
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+了解 Cloud Tiering 的新增功能。
+
+
+
+== 2021 年 9 月 2 日
+
+
+
+=== Cloud Tiering BYOL 许可证取代了 FabricPool 许可证。
+
+对于使用 Cloud Tiering 服务的 Cloud Manager 中支持的分层配置，现在提供了一个新的 * 云分层 * 许可证。这是一个浮动许可证，您可以跨多个内部 ONTAP 集群使用。您过去可能使用的 * FabricPool * 许可证仅适用于 不支持的配置。
+
+link:task-licensing-cloud-tiering.html#use-a-cloud-tiering-byol-license["了解有关全新 Cloud Tiering 许可证的更多信息"]。
+
+
+
+=== 将内部 ONTAP 集群中的非活动数据分层到与 S3 兼容的对象存储。
+
+现在，您可以将非活动数据分层到使用简单存储服务（ Simple Storage Service ， S3 ）协议的任何对象存储服务。 link:task-tiering-onprem-s3-compat.html["请参见如何将数据分层到与 S3 兼容的对象存储"]。
+
+
+
+== 2021 年 7 月 7 日
+
+
+
+=== 将数据分层到 Azure Blob 存储时， Connector 可以在内部运行。
+
+您不再需要使用 Azure vNet 中安装的 Connector 。将数据分层到 Azure Blob 存储时，您的 Connector 可以在内部的主机上运行。
+
+
+
+== 2021 年 6 月 7 日
+
+
+
+=== 现在，某些云提供商存储可以使用新的分层类。
+
+在早期版本中，使用 Amazon S3 或 Google Cloud 对象存储时，您可以在 30 天后将分层数据从标准存储类过渡到另一存储类。此版本增加了一些新功能：
+
+* 您可以选择将分层数据移至更经济高效的层的天数。这称为数据 " 生命周期管理 " 。
+* Azure Blob 现在支持 _cool_ 访问层。
+* Google Cloud Storage 支持随着时间的推移将分层数据移动到多个存储层。例如，您可以在 45 天后将分层数据从 _Standard_ 类移动到 _Nearline_ 类，然后在 75 天后移动到 _Coldline_ 类，再在 270 天后移动到 _Archive_ 类。
+
+
+
+
+=== 现在，您可以主动将数据从云层移回性能层。
+
+如果您要停止对卷使用分层，或者决定将所有用户数据保留在性能层上，而将 Snapshot 副本保留在云层上，则此功能非常有用。使用 ONTAP 9.8 及更高版本时，可以使用此功能。
+
+请参见操作说明 link:task-managing-tiering.html#migrating-data-from-the-cloud-tier-back-to-the-performance-tier["将数据迁移回性能层"]。
+
+
+
+== 2021 年 5 月 2 日
+
+
+
+=== 现在，您可以在应用分层策略时选择所有卷。
+
+在选择要从 ONTAP 系统分层的卷时， " 分层卷 " 页面中现在会显示一个复选框，用于选择 * 所有 * 卷，以便更轻松地将同一策略应用于所有卷。 link:task-managing-tiering.html#tiering-data-from-additional-volumes["请参见如何选择集群中的所有卷"]。
+
+
+
+=== " 冷却 " 天数现在可设置为最多 183 天。
+
+如果您需要更改 " 冷却天数 " ，以确定卷中的数据在移至对象存储之前必须保持非活动状态多长时间，现在，在使用 ONTAP 9.8 或更高版本时，您可以指定最长 183 天（最多 63 天）。
+
+
+
+== 2021 年 3 月 8 日
+
+
+
+=== 现在，分层到 Google Cloud Storage 时可以使用生命周期规则。
+
+分层到 Google Cloud Storage 时，您可以应用生命周期规则，以便分层数据在 30 天后从标准存储类过渡到低成本的近线存储，冷线存储或归档存储。

@@ -1,0 +1,40 @@
+---
+sidebar: sidebar 
+permalink: task-tiering-test.html 
+keywords: throughput, latency, tiering performance, cloud performance test, tiering test, object storage performance 
+summary: 在设置数据分层前后运行云性能测试，以测量从 ONTAP 集群到对象存储的网络延迟和吞吐量性能。 
+---
+= 测量网络延迟和吞吐量性能
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+在设置数据分层前后运行云性能测试，以测量从 ONTAP 集群到对象存储的网络延迟和吞吐量性能。此测试还可确定发生的任何故障。
+
+以下是性能结果示例：
+
+image:screenshot_cloud_performance_test.gif["Cloud Performance Test 的集群性能结果屏幕截图。"]
+
+最好在集群的 CPU 利用率低于 50% 时运行此检查。
+
+.尚未设置分层的集群的步骤
+. 在 Cloud Manager 顶部，单击 * 分层 * 。
+. 从 * 集群信息板 * 中，单击集群的菜单图标并选择 * 云性能测试 * 。
+. 查看详细信息并单击 * 继续 * 。
+. 按照提示提供所需信息。
++
+您需要提供的信息与您在集群上设置分层时的信息相同。
+
+. 或者，继续执行 " 分层卷 " 向导以完成设置。
+
+
+.已设置分层的集群的步骤
+. 在 Cloud Manager 顶部，单击 * 分层 * 。
+. 从 * 集群信息板 * 中，单击集群的菜单图标并选择 * 云性能测试 * 。
+. 从下拉列表中选择一个节点。
+. 查看结果或重新检查性能。
+

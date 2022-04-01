@@ -1,0 +1,5 @@
+= 
+
+
+支持的卷和聚合:: 云分层可分层的卷总数可能小于 ONTAP 系统上的卷数。这是因为无法从某些聚合对卷进行分层。有关信息，请参见 ONTAP 文档 link:https://docs.netapp.com/us-en/ontap/fabricpool/requirements-concept.html#functionality-or-features-not-supported-by-fabricpool["FabricPool 不支持的功能"^]。
+

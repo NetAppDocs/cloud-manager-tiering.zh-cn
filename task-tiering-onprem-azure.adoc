@@ -1,0 +1,233 @@
+---
+sidebar: sidebar 
+permalink: task-tiering-onprem-azure.html 
+keywords: data tiering, fabricpool, cloud tiering, tiering cold data, tiering inactive data, tiering aff, tiering fas, tiering ontap, tiering volumes, tier data, tier cold data, tier fas, tier aff, tier ontap, azure, blob, azure blob 
+summary: 通过将非活动数据分层到 Azure Blob 存储，在内部 ONTAP 集群上释放空间。 
+---
+= 将数据从内部 ONTAP 集群分层到 Azure Blob 存储
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+通过将非活动数据分层到 Azure Blob 存储，在内部 ONTAP 集群上释放空间。
+
+
+
+== 快速入门
+
+按照以下步骤快速入门，或者向下滚动到其余部分以了解完整详细信息。
+
+[role="quick-margin-para"]
+您需要满足以下要求：
+
+* 运行 ONTAP 9.4 或更高版本且与 Azure Blob 存储具有 HTTPS 连接的内部 ONTAP 集群。 https://docs.netapp.com/us-en/cloud-manager-ontap-onprem/task-discovering-ontap.html["了解如何发现集群"^]。
+* 安装在 Azure vNet 或内部环境中的 Connector 。
+* 用于 Connector 的网络连接，支持通过出站 HTTPS 连接到数据中心中的 ONTAP 集群， Azure 存储和 Cloud Tiering 服务。
+
+
+[role="quick-margin-para"]
+在 Cloud Manager 中，选择一个内部工作环境，单击分层服务的 * 启用 * ，然后按照提示将数据分层到 Azure Blob 存储。
+
+[role="quick-margin-para"]
+免费试用结束后，通过按需购买订阅， ONTAP 云分层 BYOL 许可证或两者的组合为云分层付费：
+
+* 要从 Azure Marketplace 订阅， https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.cloud-manager?tab=Overview["转到 Cloud Manager Marketplace 产品"^]，单击 * 订阅 * ，然后按照提示进行操作。
+* 要使用 Cloud Tiering BYOL 许可证付费，请发送电子邮件至： ng-cloud-tiering@netapp.com ？ Subject=Licensing[ 如果需要购买许可证，请联系我们 ] ，然后发送电子邮件至 link:task-licensing-cloud-tiering.html#add-cloud-tiering-byol-licenses-to-your-account["从 Cloud Manager Digital Wallet 将其添加到您的帐户中"]。
+
+
+
+
+== 要求
+
+验证是否支持 ONTAP 集群，设置网络以及准备对象存储。
+
+下图显示了每个组件以及需要在它们之间准备的连接：
+
+image:diagram_cloud_tiering_azure.png["一个架构图，其中显示了云分层服务，该服务连接到云提供商中的连接器，连接到 ONTAP 集群的连接器以及云提供商中的 ONTAP 集群和对象存储之间的连接。活动数据驻留在 ONTAP 集群上，而非活动数据驻留在对象存储中。"]
+
+
+NOTE: Connector 和 Blob 存储之间的通信仅用于对象存储设置。连接器可以位于您的内部，而不是云中。
+
+
+
+=== 准备 ONTAP 集群
+
+将数据分层到 Azure Blob 存储时， ONTAP 集群必须满足以下要求。
+
+支持的 ONTAP 平台::
++
+--
+* 使用 ONTAP 9.8 及更高版本时：您可以对 AFF 系统或采用纯 SSD 聚合或全 HDD 聚合的 FAS 系统中的数据进行分层。
+* 使用 ONTAP 9.7 及更早版本时：您可以对 AFF 系统或采用纯 SSD 聚合的 FAS 系统中的数据进行分层。
+
+
+--
+支持的 ONTAP 版本:: ONTAP 9.4 或更高版本
+集群网络连接要求::
++
+--
+* ONTAP 集群通过端口 443 启动与 Azure Blob 存储的 HTTPS 连接。
++
+ONTAP 可在对象存储之间读取和写入数据。对象存储永远不会启动，而只是响应。
+
++
+虽然 ExpressRoute 可提供更好的性能和更低的数据传输费用，但在 ONTAP 集群和 Azure Blob 存储之间并不需要它。但这样做是建议的最佳实践。
+
+* 需要从 Connector 建立入站连接，该连接器可以位于 Azure vNet 中或您的内部环境中。
++
+集群与 Cloud Tiering 服务之间不需要建立连接。
+
+* 托管要分层的卷的每个 ONTAP 节点都需要一个集群间 LIF 。LIF 必须与 _IP 空间 _ 关联， ONTAP 应使用此 _IP 空间 _ 连接到对象存储。
++
+设置数据分层时， Cloud Tiering 会提示您输入要使用的 IP 空间。您应选择与每个 LIF 关联的 IP 空间。这可能是您创建的 " 默认 "IP 空间或自定义 IP 空间。了解更多信息 https://docs.netapp.com/us-en/ontap/networking/create_a_lif.html["LIF"^] 和 https://docs.netapp.com/us-en/ontap/networking/standard_properties_of_ipspaces.html["IP 空间"^]。
+
+
+
+--
+支持的卷和聚合:: 云分层可分层的卷总数可能小于 ONTAP 系统上的卷数。这是因为无法从某些聚合对卷进行分层。有关信息，请参见 ONTAP 文档 link:https://docs.netapp.com/us-en/ontap/fabricpool/requirements-concept.html#functionality-or-features-not-supported-by-fabricpool["FabricPool 不支持的功能"^]。
+
+
+
+NOTE: 从 ONTAP 9.5 开始，云分层支持 FlexGroup 卷。安装程序的工作方式与任何其他卷相同。
+
+
+
+=== 发现 ONTAP 集群
+
+您需要先在 Cloud Manager 中创建内部 ONTAP 工作环境，然后才能开始对冷数据进行分层。
+
+https://docs.netapp.com/us-en/cloud-manager-ontap-onprem/task-discovering-ontap.html["了解如何发现集群"^]。
+
+
+
+=== 创建或切换连接器
+
+要将数据分层到云，需要使用 Connector 。将数据分层到 Azure Blob 存储时，您可以使用 Azure vNet 或内部部署中的 Connector 。您需要创建一个新的连接器，或者确保当前选定的连接器位于 Azure 或内部。
+
+* https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-connectors.html["了解连接器"^]
+* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-creating-connectors-azure.html["在 Azure 中创建连接器"^]
+* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-installing-linux.html["在 Linux 主机上安装 Connector"^]
+* https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-managing-connectors.html["在连接器之间切换"^]
+
+
+
+
+=== 验证您是否具有所需的 Connector 权限
+
+如果您使用 Cloud Manager 3.9.7 或更高版本创建了 Connector ，则表示您已完成所有设置。
+
+如果您使用早期版本的 Cloud Manager 创建了 Connector ，则需要编辑权限列表以添加 2 个所需权限：
+
+[source, json]
+----
+Microsoft.Storage/storageAccounts/managementPolicies/read
+Microsoft.Storage/storageAccounts/managementPolicies/write
+----
+
+
+=== 为连接器准备网络连接
+
+确保此连接器具有所需的网络连接。连接器可以安装在内部或 Azure 中。
+
+.步骤
+. 确保安装 Connector 的网络启用以下连接：
++
+** 通过端口 443 （ HTTPS ）与 Cloud Tiering 服务的出站 Internet 连接
+** 通过端口 443 与 Azure Blob 存储建立 HTTPS 连接
+** 通过端口 443 与 ONTAP 集群管理 LIF 建立 HTTPS 连接
+
+
+. 如果需要，请为 Azure 存储启用 vNet 服务端点。
++
+如果您已从 ONTAP 集群到 vNet 建立 ExpressRoute 或 VPN 连接，并且希望 Connector 和 Blob 存储之间的通信保持在虚拟专用网络中，则建议使用 vNet 服务端点连接到 Azure 存储。
+
+
+
+
+
+=== 正在准备 Azure Blob 存储
+
+设置分层时，您需要确定要使用的资源组以及属于该资源组的存储帐户和 Azure 容器。通过存储帐户， Cloud Tiering 可以对用于数据分层的 Blob 容器进行身份验证和访问。
+
+Cloud Tiering 仅支持通用 v2 和高级块 Blob 类型的存储帐户。
+
+Blob 容器必须位于中 link:reference-azure-support.html#supported-azure-regions["支持 Cloud Tiering 的区域"]。
+
+
+NOTE: 如果您计划将 Cloud Tiering 配置为使用成本较低的访问层，以便分层数据在一定天数后过渡到，则在 Azure 帐户中设置容器时，不能选择任何生命周期规则。Cloud Tiering 可管理生命周期过渡。
+
+
+
+== 将第一个集群中的非活动数据分层到 Azure Blob 存储
+
+准备好 Azure 环境后，开始对第一个集群中的非活动数据进行分层。
+
+https://docs.netapp.com/us-en/cloud-manager-ontap-onprem/task-discovering-ontap.html["内部工作环境"^]。
+
+.步骤
+. 选择一个内部集群。
+. 单击分层服务的 * 启用 * 。
++
+image:screenshot_setup_tiering_onprem.png["选择内部 ONTAP 工作环境后，屏幕右侧会显示一个屏幕截图，其中显示启用选项。"]
+
+. * 选择您的提供程序 * ：只有在使用内部连接器时，才会显示此页面。选择 * Microsoft Azure* 并单击 * 继续 * 。
+. 完成 * 分层设置 * 页面上的步骤：
++
+.. * 资源组 * ：选择一个资源组，用于管理现有容器或为分层数据创建新容器，然后单击 * 继续 * 。
+.. * Azure Container* ：将新 Blob 容器添加到存储帐户，或者选择现有容器，然后单击 * 继续 * 。
++
+使用内部连接器时，您必须输入 Azure 订阅，以访问要创建的现有容器或新容器。
+
++
+此步骤中显示的存储帐户和容器属于您在上一步中选择的资源组。
+
+.. * 访问层生命周期 * ： Cloud Tiering 可管理分层数据的生命周期过渡。数据以 _hot_ 类开头，但您可以创建一个规则，以便在一定天数后将数据移动到 _cool_ 类。
++
+选择要将分层数据过渡到的访问层以及数据移动前的天数，然后单击 * 继续 * 。例如，下面的屏幕截图显示，在对象存储中使用 45 天后，分层数据将从 _hot_ 类移动到 _cool_ 类。
+
++
+如果选择 * 在此访问层中保留数据 * ，则数据将保留在 _hot_ 访问层中，不会应用任何规则。 link:reference-azure-support.html["请参见支持的访问层"^]。
+
++
+image:screenshot_tiering_lifecycle_selection_azure.png["一个屏幕截图，显示如何选择在特定天数后移动数据的其他访问层。"]
+
++
+请注意，生命周期规则将应用于选定存储帐户中的所有 Blob 容器。
+
++
+<<Verify that you have the necessary Connector permissions,验证您是否具有所需的 Connector 权限>> 用于生命周期管理功能。
+
+.. * 集群网络 * ：选择 ONTAP 应用于连接到对象存储的 IP 空间，然后单击 * 继续 * 。
++
+选择正确的 IP 空间可确保云分层可以设置从 ONTAP 到云提供商对象存储的连接。
+
+
+
+. 在 _Tier Volumes_ 页面上，选择要为其配置分层的卷，然后启动分层策略页面：
++
+** 要选择所有卷，请选中标题行（image:button_backup_all_volumes.png[""]），然后单击 * 配置卷 * 。
+** 要选择多个卷，请选中每个卷对应的框（image:button_backup_1_volume.png[""]），然后单击 * 配置卷 * 。
+** 要选择单个卷，请单击行（或 image:screenshot_edit_icon.gif["编辑铅笔图标"] 图标）。
++
+image:screenshot_tiering_modify_volumes.gif["显示如何选择单个卷，多个卷或所有卷以及修改选定卷按钮的屏幕截图。"]
+
+
+
+. 在 _Tiering Policy_ 对话框中，选择一个分层策略，也可以调整选定卷的散热天数，然后单击 * 应用 * 。
++
+link:concept-cloud-tiering.html#volume-tiering-policies["了解有关卷分层策略和散热天数的更多信息"]。
+
++
+image:screenshot_tiering_policy_settings.png["显示可配置分层策略设置的屏幕截图。"]
+
+
+
+您已成功设置从集群上的卷到 Azure Blob 对象存储的数据分层。
+
+link:task-licensing-cloud-tiering.html["请务必订阅 Cloud Tiering 服务"]。
+
+您还可以添加其他集群或查看有关集群上活动和非活动数据的信息。有关详细信息，请参见 link:task-managing-tiering.html["从集群管理数据分层"]。

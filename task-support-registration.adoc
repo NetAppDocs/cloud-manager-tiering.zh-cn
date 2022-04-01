@@ -1,0 +1,12 @@
+---
+sidebar: sidebar 
+permalink: task-support-registration.html 
+keywords: support registration, register for support, support, nss account, add nss account, 
+summary: 在向 NetApp 技术支持创建支持案例之前，您需要先将 NetApp 支持站点帐户添加到 Cloud Manager 中，然后注册获取支持。 
+---
+= 注册以获得支持
+:icons: font
+:imagesdir: ../media/
+
+
+link:https://raw.githubusercontent.com/NetAppDocs/cloud-manager-family/main/_include/support-registration.adoc[""]

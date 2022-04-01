@@ -1,0 +1,216 @@
+---
+sidebar: sidebar 
+permalink: task-licensing-cloud-tiering.html 
+keywords: subscribe, trial, marketplace, subscription, paygo, pay as you go, byol, bring your own license, tiering, cloud tiering 
+summary: 从第一个集群设置分层时，即可免费试用 30 天的 Cloud Tiering 。免费试用结束后，您需要通过云提供商市场上的按需购买 Cloud Manager 订阅， NetApp 的 BYOL 许可证或两者的组合为 Cloud Tiering 付费。 
+---
+= 为 Cloud Tiering 设置许可
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+从第一个集群设置分层时，即可免费试用 30 天的 Cloud Tiering 。免费试用结束后，您需要通过云提供商市场上的按需购买 Cloud Manager 订阅， NetApp 的 BYOL 许可证或两者的组合为 Cloud Tiering 付费。
+
+在阅读其他内容之前，请先阅读一些注释：
+
+* 如果您已在云提供商的市场上订阅 Cloud Manager 订阅（ PAYGO ），则您也会自动从内部 ONTAP 系统订阅 Cloud Tiering 。您将在 Cloud Tiering * 许可 * 选项卡中看到活动订阅。您无需重新订阅。
+* BYOL Cloud 分层许可证是一个 _float_ 许可证，您可以在 Cloud Manager 帐户中的多个内部 ONTAP 集群之间使用。这与您过去为 FabricPool 每个集群购买 _cluster_ 许可证的情况不同。
+* 将数据分层到 StorageGRID 不收取任何费用，因此无需 BYOL 许可证或 PAYGO 注册。此分层数据不计入许可证中购买的容量。
+
+
+link:concept-cloud-tiering.html#pricing-and-licenses["详细了解云分层的许可工作原理"]。
+
+
+
+== 使用 Cloud Tiering PAYGO 订阅
+
+您可以从云提供商的市场订阅按需购买，从而获得使用 Cloud Volumes ONTAP 系统和云分层等多种云数据服务的许可。
+
+
+
+=== 从 AWS Marketplace 订阅
+
+从 AWS Marketplace 订阅 Cloud Tiering ，设置按需购买的订阅，以便将数据从 ONTAP 集群分层到 AWS S3 。
+
+[[subscribe-aws]]
+.步骤
+. 在 Cloud Manager 中，单击 * 分层 > 许可 * 。
+. 单击 AWS Marketplace 下的 * 订阅 * ，然后单击 * 继续 * 。
+. 从订阅 https://aws.amazon.com/marketplace/pp/prodview-oorxakq6lq7m4?sr=0-8&ref_=beagle&applicationId=AWSMPContessa["AWS Marketplace"^]，然后重新登录到 Cloud Central 以完成注册。
++
+以下视频显示了该过程：
+
++
+video::video_subscribing_aws_tiering.mp4[width=848,height=480]
+
+
+
+
+=== 从 Azure Marketplace 订阅
+
+从 Azure Marketplace 订阅云分层以设置按需购买的订阅，以便将数据从 ONTAP 集群分层到 Azure Blob 存储。
+
+[[subscribe-azure]]
+.步骤
+. 在 Cloud Manager 中，单击 * 分层 > 许可 * 。
+. 单击 Azure Marketplace 下的 * 订阅 * ，然后单击 * 继续 * 。
+. 从订阅 https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.cloud-manager?tab=Overview["Azure Marketplace"^]，然后重新登录到 Cloud Central 以完成注册。
++
+以下视频显示了该过程：
+
++
+video::video_subscribing_azure_tiering.mp4[width=848,height=480]
+
+
+
+
+=== 从 GCP Marketplace 订阅
+
+从 GCP Marketplace 订阅 Cloud Tiering ，设置按需购买订阅，以便将数据从 ONTAP 集群分层到 Google Cloud 存储。
+
+[[subscribe-gcp]]
+.步骤
+. 在 Cloud Manager 中，单击 * 分层 > 许可 * 。
+. 单击 GCP Marketplace 下的 * 订阅 * ，然后单击 * 继续 * 。
+. 从订阅 https://console.cloud.google.com/marketplace/details/netapp-cloudmanager/cloud-manager?supportedpurview=project&rif_reserved["GCP 市场"^]，然后重新登录到 Cloud Central 以完成注册。
++
+以下视频显示了该过程：
+
++
+video::video_subscribing_gcp_tiering.mp4[width=848,height=480]
+
+
+
+
+== 使用 Cloud Tiering BYOL 许可证
+
+NetApp 自带许可证的期限为 2 个月， 12 个月， 24 个月或 36 个月。BYOL * 云分层 * 许可证是一个 _float_ 许可证，您可以在 Cloud Manager 帐户中的多个内部 ONTAP 集群之间使用。Cloud Tiering 许可证中定义的总分层容量将在所有 * 内部集群之间共享，从而使初始许可和续订变得轻松。
+
+如果您没有 Cloud Tiering 许可证，请联系我们购买一个：
+
+* mailto ： ng-cloud-tiering@netapp.com ？ Subject=Licensing[ 发送电子邮件以购买许可证 ] 。
+* 单击 Cloud Manager 右下角的聊天图标以请求许可证。
+
+
+或者，如果您有一个未分配的基于节点的 Cloud Volumes ONTAP 许可证，而您不会使用该许可证，则可以将其转换为具有相同美元等价性和相同到期日期的 Cloud Tiering 许可证。 https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-managing-licenses.html#exchange-unassigned-node-based-licenses["有关详细信息，请访问此处"^]。
+
+您可以使用 Cloud Manager 中的数字电子钱包页面管理 Cloud Tiering BYOL 许可证。您可以添加新许可证并更新现有许可证。
+
+
+
+=== 自 2021 年 8 月 21 日起推出全新 Cloud Tiering BYOL 许可
+
+全新的 * 云分层 * 许可证于 2021 年 8 月推出，适用于使用 Cloud Tiering 服务的 Cloud Manager 中支持的分层配置。Cloud Manager 目前支持分层到以下云存储： Amazon S3 ， Azure Blob 存储， Google 云存储， S3 兼容对象存储和 StorageGRID 。
+
+您过去用于将内部 ONTAP 数据分层到云的 * FabricPool 许可证仅保留用于无法访问 Internet 的站点（也称为 " 非公开站点 " ）中的 ONTAP 部署。如果您部署的是非公开站点，则可以使用 System Manager 或 ONTAP 命令行界面在每个集群上安装 FabricPool 许可证。
+
+
+TIP: 请注意，分层到 StorageGRID 不需要 FabricPool 或云分层许可证。
+
+如果您当前正在使用 FabricPool 许可，则在 FabricPool 许可证达到到期日期或最大容量之前，您不会受到影响。如果您需要更新许可证，请联系 NetApp ，或者在更早版本时联系 NetApp ，以确保将数据分层到云的能力不会中断。
+
+* 如果您使用的配置在 Cloud Manager 中受支持，则 FabricPool 许可证将转换为 Cloud Tiering 许可证，并显示在数字电子钱包中。当这些初始许可证到期时，您需要更新 Cloud Tiering 许可证。
+* 如果您使用的配置在 Cloud Manager 中不受支持，则可以继续使用 FabricPool 许可证。 https://docs.netapp.com/us-en/ontap/cloud-install-fabricpool-task.html["请参见如何使用 System Manager 进行许可证分层"^]。
+
+
+以下是您需要了解的有关这两个许可证的一些信息：
+
+[cols="50,50"]
+|===
+| Cloud Tiering 许可证 | FabricPool 许可证 
+
+
+| 这是一个 _float_ 许可证，您可以跨多个内部 ONTAP 集群使用。 | 这是您为每个集群购买的一个许可证，并为 _every 集群购买许可证。 
+
+
+| 它已在 Cloud Manager 中的 Digital Wallet 中注册。 | 它可使用 System Manager 或 ONTAP 命令行界面应用于各个集群。 
+
+
+| 分层配置和管理通过 Cloud Manager 中的 Cloud Tiering 服务完成。 | 分层配置和管理可通过 System Manager 或 ONTAP 命令行界面完成。 
+
+
+| 配置后，您可以使用免费试用版在 30 天内无许可证使用分层服务。 | 配置完成后，您可以对前 10 TB 的数据进行分层以免费使用。 
+|===
+
+
+=== 获取 Cloud Tiering 许可证文件
+
+购买 Cloud Tiering 许可证后，您可以在 Cloud Manager 中输入 Cloud Tiering 序列号和 NSS 帐户或上传 NLF 许可证文件来激活此许可证。以下步骤显示了如果您计划使用此方法，如何获取 NLF 许可证文件。
+
+.步骤
+. 登录到 https://mysupport.netapp.com["NetApp 支持站点"^] 然后单击 * 系统 > 软件许可证 * 。
+. 输入 Cloud Tiering 许可证序列号。
++
+image:screenshot_cloud_tiering_license_step1.gif["按序列号搜索后显示许可证表的屏幕截图。"]
+
+. 在 * 许可证密钥 * 下，单击 * 获取 NetApp 许可证文件 * 。
+. 输入您的 Cloud Manager 帐户 ID （在支持站点上称为租户 ID ），然后单击 * 提交 * 下载许可证文件。
++
+image:screenshot_cloud_tiering_license_step2.gif["屏幕截图显示了获取许可证对话框，您可以在其中输入租户 ID ，然后单击提交下载许可证文件。"]
+
++
+您可以通过从 Cloud Manager 顶部选择 * 帐户 * 下拉列表，然后单击您帐户旁边的 * 管理帐户 * 来查找 Cloud Manager 帐户 ID 。您的帐户 ID 位于概述选项卡中。
+
+
+
+
+
+=== 将 Cloud Tiering BYOL 许可证添加到您的帐户
+
+为 Cloud Manager 帐户购买 Cloud Tiering 许可证后，您需要将此许可证添加到 Cloud Manager 中才能使用 Cloud Tiering 服务。
+
+.步骤
+. 单击 * 所有服务 > 数字电子钱包 > 数据服务许可证 * 。
+. 单击 * 添加许可证 * 。
+. 在 _Add License_ 对话框中，输入许可证信息并单击 * 添加许可证 * ：
++
+** 如果您拥有分层许可证序列号并知道您的 NSS 帐户，请选择 * 输入序列号 * 选项并输入该信息。
++
+如果下拉列表中没有您的 NetApp 支持站点帐户， https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-adding-nss-accounts.html["将 NSS 帐户添加到 Cloud Manager"^]。
+
+** 如果您有分层许可证文件，请选择 * 上传许可证文件 * 选项，然后按照提示附加该文件。
++
+image:screenshot_services_license_add.png["显示用于添加 Cloud Tiering BYOL 许可证的页面的屏幕截图。"]
+
+
+
+
+
+Cloud Manager 会添加许可证，以便 Cloud Tiering 服务处于活动状态。
+
+
+
+=== 更新 Cloud Tiering BYOL 许可证
+
+如果您的许可期限即将到期，或者您的许可容量即将达到限制，您将在 Cloud Tiering 中收到通知。
+
+image:screenshot_services_license_expire2.png["在 Cloud Tiering 页面中显示即将到期许可证的屏幕截图。"]
+
+此状态也会显示在 " 数字电子钱包 " 页面中。
+
+image:screenshot_services_license_expire1.png["在 \" 数字电子钱包 \" 页面中显示即将到期许可证的屏幕截图。"]
+
+您可以在 Cloud Tiering 许可证到期之前对其进行更新，以便将数据分层到云的能力不会中断。
+
+.步骤
+. 单击 Cloud Manager 右下角的聊天图标以请求延长您的期限或为特定序列号请求 Cloud Tiering 许可证的额外容量。
++
+在您为许可证付费并将其注册到 NetApp 支持站点后， Cloud Manager 会自动在数字电子邮件中更新许可证，并且数据服务许可证页面将在 5 到 10 分钟内反映此更改。
+
+. 如果 Cloud Manager 无法自动更新许可证，则需要手动上传许可证文件。
++
+.. 您可以 <<Obtain your Cloud Tiering license file,从 NetApp 支持站点获取许可证文件>>。
+.. 在数字电子邮件页面的 _Data Services Licenses_ 选项卡中，单击 image:screenshot_horizontal_more_button.gif["更多图标"] 对于要更新的服务序列号，请单击 * 更新许可证 * 。
++
+image:screenshot_services_license_update.png["选择特定服务的更新许可证按钮的屏幕截图。"]
+
+.. 在 _Update License_ 页面中，上传许可证文件并单击 * 更新许可证 * 。
+
+
+
+
+Cloud Manager 会更新许可证，以便 Cloud Tiering 服务继续处于活动状态。

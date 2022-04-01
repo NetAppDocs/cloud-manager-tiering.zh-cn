@@ -1,0 +1,15 @@
+---
+layout: astra 
+sidebar: sidebar 
+permalink: index.html 
+lead: Cloud Tiering extends your data center to the cloud by automatically tiering inactive data from on-premises ONTAP clusters to object storage. 
+summary: Cloud Tiering 可将内部 ONTAP 集群中的非活动数据自动分层到对象存储，从而将您的数据中心扩展到云。 
+---
+= Cloud Tiering 文档
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+

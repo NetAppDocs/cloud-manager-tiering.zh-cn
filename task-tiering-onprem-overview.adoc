@@ -1,0 +1,34 @@
+---
+sidebar: sidebar 
+permalink: task-tiering-onprem-overview.html 
+keywords: overview, tiering overview, tiered clusters, clusters enabled for tiering, data tiering overview, cold data, hot data, tiered data, savings, savings opportunities, saving opportunity, policies, cold snapshots, all dp user data, cold user data & snapshots, cold user data and snapshots, all user data, no policy, marketplace subscriptions, clusters associated 
+summary: Cloud Tiering 可提供每个内部集群的数据分层的聚合视图。此概述可清晰地描述您的环境并使您能够采取适当的措施。 
+---
+= 简要了解集群中的数据分层
+:toc: macro
+:hardbreaks:
+:toc: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+[role="lead"]
+Cloud Tiering 可提供每个内部集群的数据分层的聚合视图。此概述可清晰地描述您的环境并使您能够采取适当的措施。
+
+Cloud Tiering 提供了有关您的环境的以下详细信息：
+
+image:screenshot_tiering_onprem_overview.gif["\"On-Prem Overview\" 页面的屏幕截图。"]
+
+活动集群:: 当前将数据分层到云的集群数量，未将数据分层到云的集群数量以及不支持数据分层的集群数量。
+数据概述:: 分层到云的数据量，以及集群上的冷热数据量。
+总节省量:: 通过将数据分层到云节省的资金量，以及通过将更多数据分层到云节省的资金量。
+策略:: 每个分层策略应用于卷的次数。
+Marketplace 订阅:: 与每种类型的 Marketplace 订阅关联的集群数量以及有关您的订阅状态的指示。
+
+
+.步骤
+. 单击 * 分层 > 内部概述 * 。
+

@@ -1,0 +1,79 @@
+---
+sidebar: sidebar 
+permalink: reference-aws-support.html 
+keywords: aws, amazon, s3, support, regions, storage classes 
+summary: Cloud Tiering 支持多个 S3 存储类和大多数地区。 
+---
+= 支持的 S3 存储类和区域
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cloud Tiering 支持多个 S3 存储类和大多数地区。
+
+
+
+== 支持的 S3 存储类
+
+在将数据分层设置为 AWS 时， Cloud Tiering 会自动对非活动数据使用 _Standard_ 存储类。Cloud Tiering 可以应用生命周期规则，以便数据在一定天数后从 _Standard_ 存储类过渡到另一个存储类。您可以从以下存储类中进行选择：
+
+* 标准—不经常访问
+* 一个区域 IA
+* 智能分层（在访问模式发生变化时， AWS 会在两个层之间自动移动数据—频繁访问和不频繁访问）
+
+
+如果不选择其他存储类，则数据将保留在 _Standard_ 存储类中，不会应用任何规则。
+
+配置 Cloud Tiering 生命周期规则时，在 AWS 帐户中设置存储分段时，不得配置任何生命周期规则。
+
+https://aws.amazon.com/s3/storage-classes/["了解 S3 存储课程"^]。
+
+
+
+== 支持的 AWS 区域
+
+Cloud Tiering 支持以下 AWS 区域。
+
+
+
+=== 亚太地区
+
+* 孟买
+* 汉城
+* 新加坡
+* 悉尼
+* 东京
+
+
+
+
+=== 欧洲
+
+* 法兰克福
+* 爱尔兰
+* 伦敦
+* 巴黎
+* 斯德哥尔摩
+
+
+
+
+=== 北美
+
+* 加拿大中部
+* 美国东部（ N.维吉尼亚）
+* 美国东部（俄亥俄州）
+* 美国西部（ N.加利福尼亚）
+* US West （俄勒冈州）
+
+
+
+
+=== 南美洲
+
+* São
+
