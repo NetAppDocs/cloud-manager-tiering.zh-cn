@@ -90,7 +90,7 @@ Cloud Volumes ONTAP 系统是从云分层进行的只读系统。您无法通过
 
 === 支持哪些 S3 存储类？
 
-Cloud Tiering 支持将数据分层到 _Standard_ ， _Standard-Infrequent Access_ ， _One Zone-IA_或 _Intelligent _ 存储类。请参见 link:reference-aws-support.html["支持的 S3 存储类"] 有关详细信息：
+Cloud Tiering 支持将数据分层到 _Standard_ ， _Standard-Infrequent Access_ ， _One Zone-Infrequent Access_ ， _Intelligent Tierage_ 和 _Glacier 即时检索 _ 存储类。请参见 link:reference-aws-support.html["支持的 S3 存储类"] 有关详细信息：
 
 
 

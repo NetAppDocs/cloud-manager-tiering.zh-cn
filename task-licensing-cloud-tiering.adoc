@@ -96,7 +96,7 @@ NetApp 自带许可证的期限为 2 个月， 12 个月， 24 个月或 36 个�
 * 单击 Cloud Manager 右下角的聊天图标以请求许可证。
 
 
-或者，如果您有一个未分配的基于节点的 Cloud Volumes ONTAP 许可证，而您不会使用该许可证，则可以将其转换为具有相同美元等价性和相同到期日期的 Cloud Tiering 许可证。 https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-managing-licenses.html#exchange-unassigned-node-based-licenses["有关详细信息，请访问此处"^]。
+或者，如果您有一个未分配的基于节点的 Cloud Volumes ONTAP 许可证，而您不会使用该许可证，则可以将其转换为具有相同美元等价性和相同到期日期的 Cloud Tiering 许可证。 https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-manage-node-licenses.html#exchange-unassigned-node-based-licenses["有关详细信息，请访问此处"^]。
 
 您可以使用 Cloud Manager 中的数字电子钱包页面管理 Cloud Tiering BYOL 许可证。您可以添加新许可证并更新现有许可证。
 

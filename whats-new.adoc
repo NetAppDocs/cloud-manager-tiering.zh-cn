@@ -17,6 +17,16 @@ summary: 了解 Cloud Tiering 的新增功能。
 
 
 
+== 2022 年 4 月 4 日
+
+
+
+=== Amazon S3 Glacier 即时检索存储类现已推出。
+
+设置 Cloud Tiering 时，现在您可以配置生命周期规则，以便在一定天数后将非活动数据从 _Standard_ 存储类过渡到 _Glacier 即时检索 _ 。这将有助于降低 AWS 基础架构成本。
+
+
+
 == 2021 年 9 月 2 日
 
 
@@ -25,13 +35,13 @@ summary: 了解 Cloud Tiering 的新增功能。
 
 对于使用 Cloud Tiering 服务的 Cloud Manager 中支持的分层配置，现在提供了一个新的 * 云分层 * 许可证。这是一个浮动许可证，您可以跨多个内部 ONTAP 集群使用。您过去可能使用的 * FabricPool * 许可证仅适用于 不支持的配置。
 
-link:task-licensing-cloud-tiering.html#use-a-cloud-tiering-byol-license["了解有关全新 Cloud Tiering 许可证的更多信息"]。
+https://docs.netapp.com/us-en/cloud-manager-tiering/task-licensing-cloud-tiering.html#use-a-cloud-tiering-byol-license["了解有关全新 Cloud Tiering 许可证的更多信息"]。
 
 
 
 === 将内部 ONTAP 集群中的非活动数据分层到与 S3 兼容的对象存储。
 
-现在，您可以将非活动数据分层到使用简单存储服务（ Simple Storage Service ， S3 ）协议的任何对象存储服务。 link:task-tiering-onprem-s3-compat.html["请参见如何将数据分层到与 S3 兼容的对象存储"]。
+现在，您可以将非活动数据分层到使用简单存储服务（ Simple Storage Service ， S3 ）协议的任何对象存储服务。 https://docs.netapp.com/us-en/cloud-manager-tiering/task-tiering-onprem-s3-compat.html["请参见如何将数据分层到与 S3 兼容的对象存储"]。
 
 
 
