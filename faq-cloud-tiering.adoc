@@ -171,7 +171,7 @@ ONTAP 可在对象存储之间读取和写入数据。对象存储永远不会�
 
 === AWS 需要哪些权限？
 
-权限为必填项 link:task-tiering-onprem-aws#preparing-amazon-s3["以管理 S3 存储分段"]。
+权限为必填项 link:task-tiering-onprem-aws.html#preparing-amazon-s3["以管理 S3 存储分段"]。
 
 
 

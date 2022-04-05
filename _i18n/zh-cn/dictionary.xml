@@ -391,7 +391,6 @@
   <block id="87ade72d5bce2aa059ec00c3d0267dcd" category="inline-link">查看 NetApp Cloud Central 上的 Cloud Tiering 页面</block>
   <block id="4074a4b2af431bb41b7d6a27a4a0fa8c" category="paragraph">有关 Cloud Tiering 所提供价值的更多详细信息，<block ref="2b48faa4b3be6c213b2f92c388d8c1e9" category="inline-link-rx"></block>。</block>
   <block id="0f2fe86a510d6ffda7900a01b49c88f9" category="inline-link">您可以在 Cloud Manager 的工作环境中为 Cloud Volumes ONTAP 设置分层</block>
-  <block id="1b0d6afe10ff6103c540628fe566d56e" category="admonition">Cloud Volumes ONTAP 系统是从云分层进行的只读系统。<block ref="0458d8900c90ee2f69cdcbac050a32c7" category="inline-link-rx"></block>。</block>
   <block id="002fca37a5e7d8eb724e874566419716" category="section-title">支持的对象存储提供程序</block>
   <block id="9c66b95e4870e124c7162efbed0394e2" category="paragraph">您可以将内部 ONTAP 集群中的非活动数据分层到以下对象存储提供程序：</block>
   <block id="270fcb785810d0206945029bb05f4e97" category="list-text">Amazon S3</block>
@@ -470,7 +469,6 @@
   <block id="87f877198480bd1c4489bc28a2335d55" category="list-text">在将所有分层策略分配给数据保护关系中的源卷之前，请考虑 SnapMirror 传输的影响。</block>
   <block id="20f9c7a7f1c4f74661fc0727854e46f4" category="paragraph">由于数据会立即分层，因此 SnapMirror 将从云层而非性能层读取数据。这样会导致 SnapMirror 操作速度变慢—可能会使队列中的其他 SnapMirror 操作变慢，即使这些操作使用不同的分层策略也是如此。</block>
   <block id="044a101dba61ea5e747aaeee35c6de2d" category="inline-link">请参见使用 Cloud Backup 分层策略注意事项</block>
-  <block id="4655136ec90c791c1d4455d1f03b8b50" category="list-text">Cloud Backup 同样会受到使用分层策略设置的卷的影响。<block ref="3e7c39ecdf4f4bd0e6ee707ffab5d001" category="inline-link-rx"></block>。</block>
   <block id="7f7b8ca64210913a358ddc737b47e16a" category="list-text">所有 DP 用户数据（备份）</block>
   <block id="3f0d398a1e8248f6bc2bbb8471906f11" category="list-text">数据保护卷上的所有数据（不包括元数据）将立即移至云层。如果读取，则云层上的冷数据块将保持冷状态，不会回写到性能层（从 ONTAP 9.4 开始）。</block>
   <block id="ed010271127f187e6f11d9a502b5d9d5" category="admonition">此策略适用于 ONTAP 9.5 或更早版本。从 ONTAP 9.6 开始，此策略已替换为 * 所有 * 分层策略。</block>
@@ -559,7 +557,6 @@
   <block id="f62dcb7386eaf506309de5160bd02c50" category="paragraph">以下问题与权限有关。</block>
   <block id="4522a1d4b0d9206d13528cf542a074b3" category="section-title">AWS 需要哪些权限？</block>
   <block id="130be31a684effcc1ca233dec9da47e3" category="inline-link-macro">以管理 S3 存储分段</block>
-  <block id="c94fc62f6a223edaa23d5628fdf832c5" category="paragraph">权限为必填项 <block ref="a668480a49e555d959e0009bc8bc5aed" category="inline-link-macro-rx"></block>。</block>
   <block id="0639b88e83c9fb75f608ce27a4447149" category="section-title">Azure 需要哪些权限？</block>
   <block id="516e07b4e60ac0b13608986f125a4fba" category="paragraph">除了您需要为 Cloud Manager 提供的权限之外，不需要任何额外的权限。</block>
   <block id="fe3f9db90b5b9920406818b6f2f9b91e" category="section-title">Google Cloud Platform 需要哪些权限？</block>
@@ -877,4 +874,7 @@
   <block id="72899f4178ab51a60b88e578be4f92f1" category="paragraph">或者，如果您有一个未分配的基于节点的 Cloud Volumes ONTAP 许可证，而您不会使用该许可证，则可以将其转换为具有相同美元等价性和相同到期日期的 Cloud Tiering 许可证。<block ref="c110e5a4a66d7429a8ced7dc2264a8f5" category="inline-link-rx"></block>。</block>
   <block id="e2b0c2a0a664cef2184b3d17808db4ce" category="list-text">一个 ZONE 不常访问</block>
   <block id="cb6793246bf8a1d9872b2f128304ed8c" category="list-text">Glacier 即时检索</block>
+  <block id="ce34acaac9ca080c6cf882736711598e" category="admonition">Cloud Volumes ONTAP 系统是从云分层进行的只读系统。<block ref="9af043ec07eda2b8761144420bc7ff5f" category="inline-link-rx"></block>。</block>
+  <block id="1c8b696d9c11af6b6bfbc6c0a7e4a61f" category="list-text">Cloud Backup 同样会受到使用分层策略设置的卷的影响。<block ref="4e28c1a1682c24a0aaf57d23ca62ce4e" category="inline-link-rx"></block>。</block>
+  <block id="7399e8f6e7163289ee0ecfe3413b3c7a" category="paragraph">权限为必填项 <block ref="169af6556d92f8f176136d72d4ee3858" category="inline-link-macro-rx"></block>。</block>
 </blocks>
