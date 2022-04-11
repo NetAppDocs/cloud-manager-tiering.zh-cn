@@ -170,31 +170,23 @@
   <block id="931c42fa613d6d1d1197c547b4e6a7e3" category="summary">了解 Cloud Tiering 的新增功能。</block>
   <block id="ad9a656fa18a582d87590e28dce5af00" category="doc">Cloud Tiering 的新增功能</block>
   <block id="d798cbf5a08fbeb9fdd3652e5b00bb4c" category="section-title">2021 年 9 月 2 日</block>
-  <block id="de34abb57e3fabd81532295568286b3d" category="section-title">Cloud Tiering BYOL 许可证取代了 FabricPool 许可证。</block>
   <block id="2817937e51c403b4b9929eaa298b82dd" category="paragraph">对于使用 Cloud Tiering 服务的 Cloud Manager 中支持的分层配置，现在提供了一个新的 * 云分层 * 许可证。这是一个浮动许可证，您可以跨多个内部 ONTAP 集群使用。您过去可能使用的 * FabricPool * 许可证仅适用于 不支持的配置。</block>
   <block id="54b8200ba1ce85a7ad931e091de0ed98" category="inline-link-macro">了解有关全新 Cloud Tiering 许可证的更多信息</block>
-  <block id="e7fccc6a6a9e8c8bcd302d9d7daefd1f" category="section-title">将内部 ONTAP 集群中的非活动数据分层到与 S3 兼容的对象存储。</block>
   <block id="59e10c49329cd1a0a55e4a0d27f6a584" category="inline-link-macro">请参见如何将数据分层到与 S3 兼容的对象存储</block>
   <block id="916678dfdf53de83f6afdf8fca563fb3" category="section-title">2021 年 7 月 7 日</block>
-  <block id="e5e19e9abc2fc2780cfda120acc4f7d0" category="section-title">将数据分层到 Azure Blob 存储时， Connector 可以在内部运行。</block>
   <block id="def40345e2d3c9101a49141b1956c58d" category="paragraph">您不再需要使用 Azure vNet 中安装的 Connector 。将数据分层到 Azure Blob 存储时，您的 Connector 可以在内部的主机上运行。</block>
   <block id="945fb8f32f58d1cc36cb9f1e9e4c6fe5" category="section-title">2021 年 6 月 7 日</block>
-  <block id="379376a340ce5a2f52aae2612118a1bd" category="section-title">现在，某些云提供商存储可以使用新的分层类。</block>
   <block id="277a1d3dc69ddcb600b5564bbfee2f99" category="paragraph">在早期版本中，使用 Amazon S3 或 Google Cloud 对象存储时，您可以在 30 天后将分层数据从标准存储类过渡到另一存储类。此版本增加了一些新功能：</block>
   <block id="92a8cc3e0000b5a588f5e5a545d580b8" category="list-text">您可以选择将分层数据移至更经济高效的层的天数。这称为数据 " 生命周期管理 " 。</block>
   <block id="e7e39728235a606f9321e32048703018" category="list-text">Azure Blob 现在支持 _cool_ 访问层。</block>
   <block id="b2c1efe1106d7a3c0771b064bea9957c" category="list-text">Google Cloud Storage 支持随着时间的推移将分层数据移动到多个存储层。例如，您可以在 45 天后将分层数据从 _Standard_ 类移动到 _Nearline_ 类，然后在 75 天后移动到 _Coldline_ 类，再在 270 天后移动到 _Archive_ 类。</block>
-  <block id="d3a691a2ed6d63a991a7682ab144013f" category="section-title">现在，您可以主动将数据从云层移回性能层。</block>
   <block id="c2c0bee6af3a5a60056d41dcc371d786" category="paragraph">如果您要停止对卷使用分层，或者决定将所有用户数据保留在性能层上，而将 Snapshot 副本保留在云层上，则此功能非常有用。使用 ONTAP 9.8 及更高版本时，可以使用此功能。</block>
   <block id="296729a9ae6cd989b611bbaa8f279cba" category="inline-link-macro">将数据迁移回性能层</block>
   <block id="ef010ff21ef40a36a12794034bd76e1b" category="paragraph">请参见操作说明 <block ref="81dc96fdd3bce727e4737236967f1536" category="inline-link-macro-rx"></block>。</block>
   <block id="824b76af9549cb14fd2443aa485afb15" category="section-title">2021 年 5 月 2 日</block>
-  <block id="5de9b4ed62b2e6832897a1f7b7d93636" category="section-title">现在，您可以在应用分层策略时选择所有卷。</block>
   <block id="bf6525c86100838072a02751028c3547" category="inline-link-macro">请参见如何选择集群中的所有卷</block>
   <block id="36ce0e84f37feb90fb719b27375ae5e7" category="paragraph">在选择要从 ONTAP 系统分层的卷时， " 分层卷 " 页面中现在会显示一个复选框，用于选择 * 所有 * 卷，以便更轻松地将同一策略应用于所有卷。 <block ref="fe9c671df76431123a5e8d8776c7cef2" category="inline-link-macro-rx"></block>。</block>
-  <block id="493c9069f29fa48faaa688db1fa4661e" category="section-title">" 冷却 " 天数现在可设置为最多 183 天。</block>
   <block id="2296f192167be3972e69fc3d386a3e66" category="paragraph">如果您需要更改 " 冷却天数 " ，以确定卷中的数据在移至对象存储之前必须保持非活动状态多长时间，现在，在使用 ONTAP 9.8 或更高版本时，您可以指定最长 183 天（最多 63 天）。</block>
-  <block id="4f82c39e99959a1e5fa5a9a696bc2f05" category="section-title">现在，分层到 Google Cloud Storage 时可以使用生命周期规则。</block>
   <block id="b4baef0a3a494382cb3865753733f031" category="paragraph">分层到 Google Cloud Storage 时，您可以应用生命周期规则，以便分层数据在 30 天后从标准存储类过渡到低成本的近线存储，冷线存储或归档存储。</block>
   <block id="56e7e76078700fc13565626e04d55715" category="summary">通过将非活动数据分层到使用简单存储服务（ Simple Storage Service ， S3 ）协议的任何对象存储服务，在内部 ONTAP 集群上提供可用空间。</block>
   <block id="6fcd419d9b16c5368ab2877625e80567" category="doc">将数据从内部 ONTAP 集群分层到 S3 对象存储</block>
@@ -378,8 +370,6 @@
   <block id="6b5920220b135ba1ff95cfb5b149f138" category="summary">NetApp 的云分层服务可将内部 ONTAP 集群中的非活动数据自动分层到对象存储，从而将您的数据中心扩展到云。这样可以在集群上腾出宝贵的空间来处理更多工作负载，而无需更改应用程序层。云分层可以降低数据中心的成本，并使您能够从资本支出模式切换到运营支出模式。</block>
   <block id="36afa058c74d288178950c27927bdb38" category="doc">了解 Cloud Tiering</block>
   <block id="647439c1467c8118206ec0bd264e5f44" category="paragraph">FabricPool 分层服务利用了 _Cloud Tier_ 的功能。FabricPool 是一种 NetApp Data Fabric 技术，可将数据自动分层到低成本的对象存储。活动数据（热数据）保留在本地层（内部 ONTAP 聚合）上，而非活动数据（冷数据）则移至云层，同时保持 ONTAP 数据效率。</block>
-  <block id="011e4b5a7fb442bf2848da9c53ef3cd0" category="inline-link">使用 FabricPool 的要求</block>
-  <block id="14e790da71b49de4665d3ddb7594a860" category="paragraph">* 注： * 从 ONTAP 9.8 开始，除了高性能 SSD 之外，您还可以对由 HDD 组成的聚合中的数据进行分层。在该版本之前，您只能对 AFF 系统或采用纯 SSD 聚合的 FAS 系统中的数据进行分层。请参见<block ref="e0a79ddede56a90935247b71be1bce6a" category="inline-link-rx"></block> 了解详细信息。</block>
   <block id="98f770b0af18ca763421bac22b4b6805" category="section-title">功能</block>
   <block id="c6a7db5c25117c443a476e127b47fb7e" category="paragraph">Cloud Tiering 提供自动化，监控，报告和通用管理界面：</block>
   <block id="e06e7e77771ffb8d53ca2e5570304aa3" category="list-text">借助自动化，可以更轻松地设置和管理从内部 ONTAP 集群到云的数据分层</block>
@@ -392,7 +382,6 @@
   <block id="4074a4b2af431bb41b7d6a27a4a0fa8c" category="paragraph">有关 Cloud Tiering 所提供价值的更多详细信息，<block ref="2b48faa4b3be6c213b2f92c388d8c1e9" category="inline-link-rx"></block>。</block>
   <block id="0f2fe86a510d6ffda7900a01b49c88f9" category="inline-link">您可以在 Cloud Manager 的工作环境中为 Cloud Volumes ONTAP 设置分层</block>
   <block id="002fca37a5e7d8eb724e874566419716" category="section-title">支持的对象存储提供程序</block>
-  <block id="9c66b95e4870e124c7162efbed0394e2" category="paragraph">您可以将内部 ONTAP 集群中的非活动数据分层到以下对象存储提供程序：</block>
   <block id="270fcb785810d0206945029bb05f4e97" category="list-text">Amazon S3</block>
   <block id="6a51ed7bcacdfb13f78abc1e0f69c201" category="list-text">Microsoft Azure Blob</block>
   <block id="833c2c211a541e50ad94433664e4b5c1" category="list-text">Google Cloud 存储</block>
@@ -426,7 +415,6 @@
   <block id="3f08769be064240fa25ba129ac43d9a4" category="paragraph">例如，如果您拥有 10 TB 许可证，则超过 10 TB 的所有容量均通过按需购买订阅付费。</block>
   <block id="ad05b2f231e5f48f63b30a2913fa7fef" category="paragraph">在免费试用期间，或者如果您未超过 Cloud Tiering BYOL 许可证，则不会从按需购买订阅中收取任何费用。</block>
   <block id="09c7ee4be0db4e9240de27e931212553" category="inline-link-macro">了解如何设置按需购买订阅</block>
-  <block id="ae35798c86544bd373763be071197bcd" category="paragraph"><block ref="695e49e1d7c93e1531d22946f3605e9b" category="inline-link-macro-rx"></block>。</block>
   <block id="fce5aebaf837d23e27b8a9d6a54a6467" category="section-title">自带许可证</block>
   <block id="df3841822547641e1f0490414fb8f19e" category="paragraph">通过从 NetApp 购买 * Cloud Tiere* 许可证来获取您自己的许可证。您可以购买 2 个月， 12 个月， 24 个月或 36 个月期限的许可证，并指定任意分层容量。BYOL 云分层许可证是一个 _float_ 许可证，您可以跨多个内部 ONTAP 集群使用。您在 Cloud Tiering 许可证中定义的总分层容量可供所有内部集群使用。</block>
   <block id="7b31eba1fa6d2aa1d3bf4ddb10d4b302" category="inline-link-macro">了解如何使用 Cloud Tiering BYOL 许可证</block>
@@ -865,7 +853,6 @@
   <block id="4c7d5d7dfde4a7bd82b54348182043d3" category="sidebar">其他资源</block>
   <block id="cc81b1698333ba727fd5bde305c3cf08" category="sidebar">Cloud Central 用例</block>
   <block id="ad806d4b803a5aa7358400786d14dec0" category="section-title">2022 年 4 月 4 日</block>
-  <block id="7c8a4291aea538c22d3b7597f39f6683" category="section-title">Amazon S3 Glacier 即时检索存储类现已推出。</block>
   <block id="073223fc83a8b7f1f274f1af1f635f2f" category="paragraph">设置 Cloud Tiering 时，现在您可以配置生命周期规则，以便在一定天数后将非活动数据从 _Standard_ 存储类过渡到 _Glacier 即时检索 _ 。这将有助于降低 AWS 基础架构成本。</block>
   <block id="34a4923a0f84a1bc223389cfed6e2b62" category="paragraph"><block ref="3054f156a0693c67de0611c0445f676e" category="inline-link-rx"></block>。</block>
   <block id="df94b79ab63138be1c03382ae20c338d" category="paragraph">现在，您可以将非活动数据分层到使用简单存储服务（ Simple Storage Service ， S3 ）协议的任何对象存储服务。<block ref="26932bf166134e05b1ade0d7ecb1b6d8" category="inline-link-rx"></block>。</block>
@@ -877,4 +864,22 @@
   <block id="ce34acaac9ca080c6cf882736711598e" category="admonition">Cloud Volumes ONTAP 系统是从云分层进行的只读系统。<block ref="9af043ec07eda2b8761144420bc7ff5f" category="inline-link-rx"></block>。</block>
   <block id="1c8b696d9c11af6b6bfbc6c0a7e4a61f" category="list-text">Cloud Backup 同样会受到使用分层策略设置的卷的影响。<block ref="4e28c1a1682c24a0aaf57d23ca62ce4e" category="inline-link-rx"></block>。</block>
   <block id="7399e8f6e7163289ee0ecfe3413b3c7a" category="paragraph">权限为必填项 <block ref="169af6556d92f8f176136d72d4ee3858" category="inline-link-macro-rx"></block>。</block>
+  <block id="6cb8333618f00b139da255e7f5a82ea0" category="section-title">Amazon S3 Glacier 即时检索存储类现已推出</block>
+  <block id="199090bb5d58df554b18a5cb68acb0b7" category="section-title">Cloud Tiering 已完全符合 ONTAP Select 系统的要求</block>
+  <block id="a74220a8acc78d1041352afb305af18f" category="paragraph">除了对 AFF 和 FAS 系统中的数据进行分层之外，现在您还可以将 ONTAP Select 系统中的非活动数据分层到云存储。</block>
+  <block id="99c3c55ceb085b94e53d8b7984863037" category="section-title">Cloud Tiering BYOL 许可证取代了 FabricPool 许可证</block>
+  <block id="24263383a842093a8c2b6b9b8a88989d" category="section-title">将内部 ONTAP 集群中的非活动数据分层到与 S3 兼容的对象存储</block>
+  <block id="154176674c0672732a91f2bd7ca5d8e0" category="section-title">将数据分层到 Azure Blob 存储时， Connector 可以在内部运行</block>
+  <block id="c4f829b7ae242ef2fe076d1c69689d01" category="section-title">现在，某些云提供商存储可以使用新的分层类</block>
+  <block id="84cada6f6939410de8fc42b2cea10895" category="section-title">现在，您可以主动将数据从云层移回性能层</block>
+  <block id="011ff5422aa046bd5cf08306e8b04fde" category="section-title">现在，您可以在应用分层策略时选择所有卷</block>
+  <block id="f268cb0b89ceae31cbeb9f1cf4669fd0" category="section-title">" 冷却 " 天数现在可设置为最多 183 天</block>
+  <block id="5a294035d7c08dc10d36a9f693e9bdb7" category="section-title">现在，分层到 Google Cloud Storage 时可以使用生命周期规则</block>
+  <block id="7beb276ec918c2d8eb132df5ed6fe576" category="section-title">支持哪些类型的 ONTAP 系统？</block>
+  <block id="9b07339421cb8fc38c122eac748e7d25" category="paragraph">AFF ， FAS 和 ONTAP Select 系统支持云分层。</block>
+  <block id="ec0515a8a06c1c0cf10efc6cbb1bfab9" category="inline-link">使用 FabricPool 的注意事项和要求</block>
+  <block id="2e1c93e13afa4226049aaf573620580e" category="paragraph">最初在采用纯 SSD 聚合的 AFF 和 FAS 系统上受支持，从 ONTAP 9.8 开始，除了高性能 SSD 之外，您还可以对包含 HDD 的聚合中的数据进行分层。请参见<block ref="6b92341e29e5578d52c0690ebbf4bdb7" category="inline-link-rx"></block> 了解详细信息。</block>
+  <block id="ba7f44ea95b8ea6bdfe58a881b0dbc4d" category="admonition">AFF ， FAS 和 ONTAP Select 系统支持云分层。</block>
+  <block id="403df42df80267a7b2bc0be8c3e6685d" category="paragraph">您可以将内部 ONTAP 系统中的非活动数据分层到以下对象存储提供程序：</block>
+  <block id="02778b04e5a037c1f79623dbe0edaeaa" category="paragraph"><block ref="ec35df1b46bc45bcde27ce05d4c1911f" category="inline-link-macro-rx"></block>。</block>
 </blocks>

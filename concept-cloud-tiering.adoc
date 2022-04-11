@@ -17,7 +17,10 @@ NetApp 的云分层服务可将内部 ONTAP 集群中的非活动数据自动分
 
 FabricPool 分层服务利用了 _Cloud Tier_ 的功能。FabricPool 是一种 NetApp Data Fabric 技术，可将数据自动分层到低成本的对象存储。活动数据（热数据）保留在本地层（内部 ONTAP 聚合）上，而非活动数据（冷数据）则移至云层，同时保持 ONTAP 数据效率。
 
-* 注： * 从 ONTAP 9.8 开始，除了高性能 SSD 之外，您还可以对由 HDD 组成的聚合中的数据进行分层。在该版本之前，您只能对 AFF 系统或采用纯 SSD 聚合的 FAS 系统中的数据进行分层。请参见 https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-mgng-stor-tier-fp/GUID-8E421CC9-1DE1-492F-A84C-9EB1B0177807.html["使用 FabricPool 的要求"^] 了解详细信息。
+最初在采用纯 SSD 聚合的 AFF 和 FAS 系统上受支持，从 ONTAP 9.8 开始，除了高性能 SSD 之外，您还可以对包含 HDD 的聚合中的数据进行分层。请参见 https://docs.netapp.com/us-en/ontap/fabricpool/requirements-concept.html["使用 FabricPool 的注意事项和要求"^] 了解详细信息。
+
+
+TIP: AFF ， FAS 和 ONTAP Select 系统支持云分层。
 
 
 
@@ -42,7 +45,7 @@ TIP: Cloud Volumes ONTAP 系统是从云分层进行的只读系统。 https://d
 
 == 支持的对象存储提供程序
 
-您可以将内部 ONTAP 集群中的非活动数据分层到以下对象存储提供程序：
+您可以将内部 ONTAP 系统中的非活动数据分层到以下对象存储提供程序：
 
 * Amazon S3
 * Microsoft Azure Blob
@@ -108,7 +111,7 @@ Cloud Tiering 以按需购买模式提供基于消费的许可。通过云提供
 
 在免费试用期间，或者如果您未超过 Cloud Tiering BYOL 许可证，则不会从按需购买订阅中收取任何费用。
 
-link:task-licensing-cloud-tiering.html#Use-a-cloud-tiering-paygo-subscription["了解如何设置按需购买订阅"]。
+link:task-licensing-cloud-tiering.html#use-a-cloud-tiering-paygo-subscription["了解如何设置按需购买订阅"]。
 
 
 

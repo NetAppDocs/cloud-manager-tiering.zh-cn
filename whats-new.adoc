@@ -21,9 +21,15 @@ summary: 了解 Cloud Tiering 的新增功能。
 
 
 
-=== Amazon S3 Glacier 即时检索存储类现已推出。
+=== Amazon S3 Glacier 即时检索存储类现已推出
 
 设置 Cloud Tiering 时，现在您可以配置生命周期规则，以便在一定天数后将非活动数据从 _Standard_ 存储类过渡到 _Glacier 即时检索 _ 。这将有助于降低 AWS 基础架构成本。
+
+
+
+=== Cloud Tiering 已完全符合 ONTAP Select 系统的要求
+
+除了对 AFF 和 FAS 系统中的数据进行分层之外，现在您还可以将 ONTAP Select 系统中的非活动数据分层到云存储。
 
 
 
@@ -31,7 +37,7 @@ summary: 了解 Cloud Tiering 的新增功能。
 
 
 
-=== Cloud Tiering BYOL 许可证取代了 FabricPool 许可证。
+=== Cloud Tiering BYOL 许可证取代了 FabricPool 许可证
 
 对于使用 Cloud Tiering 服务的 Cloud Manager 中支持的分层配置，现在提供了一个新的 * 云分层 * 许可证。这是一个浮动许可证，您可以跨多个内部 ONTAP 集群使用。您过去可能使用的 * FabricPool * 许可证仅适用于 不支持的配置。
 
@@ -39,7 +45,7 @@ https://docs.netapp.com/us-en/cloud-manager-tiering/task-licensing-cloud-tiering
 
 
 
-=== 将内部 ONTAP 集群中的非活动数据分层到与 S3 兼容的对象存储。
+=== 将内部 ONTAP 集群中的非活动数据分层到与 S3 兼容的对象存储
 
 现在，您可以将非活动数据分层到使用简单存储服务（ Simple Storage Service ， S3 ）协议的任何对象存储服务。 https://docs.netapp.com/us-en/cloud-manager-tiering/task-tiering-onprem-s3-compat.html["请参见如何将数据分层到与 S3 兼容的对象存储"]。
 
@@ -49,7 +55,7 @@ https://docs.netapp.com/us-en/cloud-manager-tiering/task-licensing-cloud-tiering
 
 
 
-=== 将数据分层到 Azure Blob 存储时， Connector 可以在内部运行。
+=== 将数据分层到 Azure Blob 存储时， Connector 可以在内部运行
 
 您不再需要使用 Azure vNet 中安装的 Connector 。将数据分层到 Azure Blob 存储时，您的 Connector 可以在内部的主机上运行。
 
@@ -59,7 +65,7 @@ https://docs.netapp.com/us-en/cloud-manager-tiering/task-licensing-cloud-tiering
 
 
 
-=== 现在，某些云提供商存储可以使用新的分层类。
+=== 现在，某些云提供商存储可以使用新的分层类
 
 在早期版本中，使用 Amazon S3 或 Google Cloud 对象存储时，您可以在 30 天后将分层数据从标准存储类过渡到另一存储类。此版本增加了一些新功能：
 
@@ -70,7 +76,7 @@ https://docs.netapp.com/us-en/cloud-manager-tiering/task-licensing-cloud-tiering
 
 
 
-=== 现在，您可以主动将数据从云层移回性能层。
+=== 现在，您可以主动将数据从云层移回性能层
 
 如果您要停止对卷使用分层，或者决定将所有用户数据保留在性能层上，而将 Snapshot 副本保留在云层上，则此功能非常有用。使用 ONTAP 9.8 及更高版本时，可以使用此功能。
 
@@ -82,13 +88,13 @@ https://docs.netapp.com/us-en/cloud-manager-tiering/task-licensing-cloud-tiering
 
 
 
-=== 现在，您可以在应用分层策略时选择所有卷。
+=== 现在，您可以在应用分层策略时选择所有卷
 
 在选择要从 ONTAP 系统分层的卷时， " 分层卷 " 页面中现在会显示一个复选框，用于选择 * 所有 * 卷，以便更轻松地将同一策略应用于所有卷。 link:task-managing-tiering.html#tiering-data-from-additional-volumes["请参见如何选择集群中的所有卷"]。
 
 
 
-=== " 冷却 " 天数现在可设置为最多 183 天。
+=== " 冷却 " 天数现在可设置为最多 183 天
 
 如果您需要更改 " 冷却天数 " ，以确定卷中的数据在移至对象存储之前必须保持非活动状态多长时间，现在，在使用 ONTAP 9.8 或更高版本时，您可以指定最长 183 天（最多 63 天）。
 
@@ -98,6 +104,6 @@ https://docs.netapp.com/us-en/cloud-manager-tiering/task-licensing-cloud-tiering
 
 
 
-=== 现在，分层到 Google Cloud Storage 时可以使用生命周期规则。
+=== 现在，分层到 Google Cloud Storage 时可以使用生命周期规则
 
 分层到 Google Cloud Storage 时，您可以应用生命周期规则，以便分层数据在 30 天后从标准存储类过渡到低成本的近线存储，冷线存储或归档存储。
