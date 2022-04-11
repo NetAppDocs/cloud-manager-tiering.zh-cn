@@ -651,7 +651,7 @@
         </li>
         
         <li class="n-breadcrumb__list-item">
-          <a href="https://docs.netapp.com/zh-cn/cloud/">云文档</a>
+          <a href="https://docs.netapp.com/us-en/cloud/">云文档</a>
         </li>
         
 
@@ -689,7 +689,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-04-05 14:24:33 +0000">04/05/2022</time>
+    <time datetime="2022-04-11 12:59:27 +0000">04/11/2022</time>
     
   
 
@@ -704,12 +704,20 @@
 <div class="paragraph">
 <p>FabricPool 分层服务利用了 <em>Cloud Tier</em> 的功能。FabricPool 是一种 NetApp Data Fabric 技术，可将数据自动分层到低成本的对象存储。活动数据（热数据）保留在本地层（内部 ONTAP 聚合）上，而非活动数据（冷数据）则移至云层，同时保持 ONTAP 数据效率。</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>注： * 从 ONTAP 9.8 开始，除了高性能 SSD 之外，您还可以对由 HDD 组成的聚合中的数据进行分层。在该版本之前，您只能对 AFF 系统或采用纯 SSD 聚合的 FAS 系统中的数据进行分层。请参见 <a href="https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-mgng-stor-tier-fp/GUID-8E421CC9-1DE1-492F-A84C-9EB1B0177807.html" target="_blank" rel="noopener">"使用 FabricPool 的要求"</a> 了解详细信息。</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>最初在采用纯 SSD 聚合的 AFF 和 FAS 系统上受支持，从 ONTAP 9.8 开始，除了高性能 SSD 之外，您还可以对包含 HDD 的聚合中的数据进行分层。请参见 <a href="https://docs.netapp.com/us-en/ontap/fabricpool/requirements-concept.html" target="_blank" rel="noopener">"使用 FabricPool 的注意事项和要求"</a> 了解详细信息。</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/cloud-manager-tiering/images/tip.svg" alt="提示">
+</td>
+<td class="content">
+AFF ， FAS 和 ONTAP Select 系统支持云分层。
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -762,7 +770,7 @@ Cloud Volumes ONTAP 系统是从云分层进行的只读系统。 <a href="https
 <h2 id="支持的对象存储提供程序">支持的对象存储提供程序</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>您可以将内部 ONTAP 集群中的非活动数据分层到以下对象存储提供程序：</p>
+<p>您可以将内部 ONTAP 系统中的非活动数据分层到以下对象存储提供程序：</p>
 </div>
 <div class="ulist">
 <ul>
@@ -880,7 +888,7 @@ Cloud Volumes ONTAP 系统是从云分层进行的只读系统。 <a href="https
 <p>在免费试用期间，或者如果您未超过 Cloud Tiering BYOL 许可证，则不会从按需购买订阅中收取任何费用。</p>
 </div>
 <div class="paragraph">
-<p><a href="task-licensing-cloud-tiering.html#Use-a-cloud-tiering-paygo-subscription">"了解如何设置按需购买订阅"</a>。</p>
+<p><a href="task-licensing-cloud-tiering.html#use-a-cloud-tiering-paygo-subscription">"了解如何设置按需购买订阅"</a>。</p>
 </div>
 </div>
 <div class="sect2">
