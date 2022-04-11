@@ -6,6 +6,7 @@ summary: 从第一个集群设置分层时，即可免费试用 30 天的 Cloud 
 ---
 = 为 Cloud Tiering 设置许可
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

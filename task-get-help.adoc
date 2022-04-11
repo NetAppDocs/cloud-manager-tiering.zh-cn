@@ -5,8 +5,52 @@ keywords: help, ticket, open support case, support, netapp support, technical su
 summary: NetApp 通过多种方式为 Cloud Manager 提供支持。全天候提供丰富的免费自助支持选项，例如知识库（ KB ）文章和社区论坛。您的支持注册包括通过 Web 服务单提供的远程技术支持。 
 ---
 = 获取帮助
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
-link:https://raw.githubusercontent.com/NetAppDocs/cloud-manager-family/main/_include/get-help.adoc[""]
+NetApp 通过多种方式为 Cloud Manager 及其云服务提供支持。全天候提供丰富的免费自助支持选项，例如知识库（ KB ）文章和社区论坛。您的支持注册包括通过 Web 服务单提供的远程技术支持。
+
+
+
+== 自助支持
+
+这些选项每周 7 天，每天 24 小时免费提供：
+
+* https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services["知识库"^]
++
+通过 Cloud Manager 知识库搜索，查找有助于解决问题的文章。
+
+* http://community.netapp.com/["社区"^]
++
+加入 Cloud Manager 社区，关注正在进行的讨论或创建新的讨论。
+
+* 文档。
++
+您当前正在查看的 Cloud Manager 文档。
+
+* mailto ： ng-cloudmanager-feedback@netapp.com （反馈电子邮件）
++
+我们非常重视您的反馈意见。提交反馈以帮助我们改进 Cloud Manager 。
+
+
+
+
+
+== NetApp 支持
+
+除了上述自助支持选项之外，您还可以在激活支持后与 NetApp 支持工程师合作解决任何问题。
+
+.步骤
+. 在 Cloud Manager 中，单击 * 帮助 > 支持 * 。
+. 在 "Technical Support" 下选择一个可用选项：
++
+.. 单击 * 致电我们 * 可查找 NetApp 技术支持的电话号码。
+.. 单击 * 打开问题描述 * ，选择一个选项，然后单击 * 发送 * 。
++
+NetApp 代表将审核您的案例，并尽快与您联系。
+
+
+
+

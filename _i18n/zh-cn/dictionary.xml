@@ -230,7 +230,6 @@
   <block id="ef451a94db19d37a27a0b08cd56be525" category="paragraph">您已成功设置从集群上的卷到与 S3 兼容的对象存储的数据分层。</block>
   <block id="ce21e7ae4271271294ccbf54c8fd6864" category="summary">NetApp 通过多种方式为 Cloud Manager 提供支持。全天候提供丰富的免费自助支持选项，例如知识库（ KB ）文章和社区论坛。您的支持注册包括通过 Web 服务单提供的远程技术支持。</block>
   <block id="fabfc25ef8996fd90836e58a4c0b26b6" category="doc">获取帮助</block>
-  <block id="7ccaf84febc0ed633fbdbadb8d488a7e" category="paragraph"><block ref="7ccaf84febc0ed633fbdbadb8d488a7e" category="inline-link-macro-rx"></block></block>
   <block id="7f07b498da08e19eda2c8c1c5ee2c27e" category="summary">通过将非活动数据分层到 Azure Blob 存储，在内部 ONTAP 集群上释放空间。</block>
   <block id="f7b28901adf8c67d01732b27eac78bee" category="doc">将数据从内部 ONTAP 集群分层到 Azure Blob 存储</block>
   <block id="d2f518b275848356f172ff6ae0c10fa8" category="list-text">运行 ONTAP 9.4 或更高版本且与 Azure Blob 存储具有 HTTPS 连接的内部 ONTAP 集群。<block ref="afd80128eeaacb8238d3ffdcf8ecd8a8" category="inline-link-rx"></block>。</block>
@@ -556,8 +555,6 @@
   <block id="5e569ca5b951c17bf4802afb37a89bf3" category="section-title">与 S3 兼容的对象存储需要哪些权限？</block>
   <block id="8c006bf4272613635c13c9ff5db1f075" category="paragraph"><block ref="d2239b3c87c0305d493f4a0ee8888f47" category="inline-link-macro-rx"></block>。</block>
   <block id="30d965eef5ba25c6b9998ae38270b43e" category="doc">法律声明</block>
-  <block id="c59ae8d7beeb519a23478ab048af482c" category="paragraph"><block ref="c59ae8d7beeb519a23478ab048af482c" category="inline-link-macro-rx"></block></block>
-  <block id="6f2ac1cf1da8ec34232c651d4bba0149" category="paragraph"><block ref="6f2ac1cf1da8ec34232c651d4bba0149" category="inline-link-macro-rx"></block></block>
   <block id="4940124e8487cb4ea36f1511a195cf66" category="inline-link-macro">有关 Cloud Manager 3.9 的注意事项</block>
   <block id="c069fcc68c5dfa73ccc99924c836cae9" category="list-text"><block ref="c069fcc68c5dfa73ccc99924c836cae9" category="inline-link-macro-rx"></block></block>
   <block id="a5e8ac089fe7eb702f683ce020dc2a2a" category="inline-link-macro">有关 Cloud Tiering 的注意事项</block>
@@ -814,7 +811,6 @@
   <block id="18b67cdd6c50872fa0de2de9dfd11343" category="doc">Cloud Tiering 文档</block>
   <block id="3c10116b37b407ac79092a38ffb292e4" category="summary">在向 NetApp 技术支持创建支持案例之前，您需要先将 NetApp 支持站点帐户添加到 Cloud Manager 中，然后注册获取支持。</block>
   <block id="42748df9eaa0be17ddc5cc1593cf57ab" category="doc">注册以获得支持</block>
-  <block id="d53e2559d6ace0e907fc57192bf286b6" category="paragraph"><block ref="d53e2559d6ace0e907fc57192bf286b6" category="inline-link-macro-rx"></block></block>
   <block id="7ff191df90fac0fa94ab5c2b5101a5e9" category="sidebar">所有 Cloud Manager 文档</block>
   <block id="7422586a973725fb5c732043909f2d2d" category="sidebar">Cloud Tiering 文档</block>
   <block id="7d0ee6fed10d3d4e5c9ee496729ab519" category="sidebar">发行说明</block>
@@ -882,4 +878,54 @@
   <block id="ba7f44ea95b8ea6bdfe58a881b0dbc4d" category="admonition">AFF ， FAS 和 ONTAP Select 系统支持云分层。</block>
   <block id="403df42df80267a7b2bc0be8c3e6685d" category="paragraph">您可以将内部 ONTAP 系统中的非活动数据分层到以下对象存储提供程序：</block>
   <block id="02778b04e5a037c1f79623dbe0edaeaa" category="paragraph"><block ref="ec35df1b46bc45bcde27ce05d4c1911f" category="inline-link-macro-rx"></block>。</block>
+  <block id="aeaeee19a7c393222e407a525cf01991" category="section-title">添加 NSS 帐户</block>
+  <block id="de2241fea60d98698faaa196ff73ee80" category="paragraph">通过支持信息板，您可以从一个位置添加和管理所有 NetApp 支持站点帐户。</block>
+  <block id="5be2593b5948f30a15179a32daa73ee2" category="inline-link">注册一个</block>
+  <block id="14b05cf61f1aba58d38b393e69b69538" category="list-text">如果您还没有 NetApp 支持站点帐户，<block ref="0a8e82436ea73fe635862cfba3acf101" category="inline-link-rx"></block>。</block>
+  <block id="0046efb3377274ff3215d4b30269809e" category="list-text">在 Cloud Manager 控制台右上角，单击帮助图标，然后选择 * 支持 * 。</block>
+  <block id="b50f0a46135bcb7083b1f2f82032fc26" category="inline-image-macro">帮助菜单的屏幕截图，其中列出的第一个选项为支持</block>
+  <block id="868d9aa88f16ea923af1d15eac5d2647" category="paragraph"><block ref="868d9aa88f16ea923af1d15eac5d2647" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d17d6b5dafebab6b7659da8850737e70" category="list-text">单击 * NSS 管理 &gt; 添加 NSS 帐户 * 。</block>
+  <block id="8aaf101e623c543c7eef3c65f6233366" category="list-text">出现提示时，单击 * 继续 * 以重定向到 Microsoft 登录页面。</block>
+  <block id="19d089db572ee6a1e154a0c9c9e57bfd" category="paragraph">NetApp 使用 Microsoft Azure Active Directory 作为身份提供程序来提供特定于支持和许可的身份验证服务。</block>
+  <block id="465ec6d5eafa3524c948c99d8bfcd306" category="list-text">在登录页面上，提供 NetApp 支持站点注册的电子邮件地址和密码以执行身份验证过程。</block>
+  <block id="f5fb4199485234c409525f430b737010" category="paragraph">此操作可使 Cloud Manager 使用您的 NSS 帐户。</block>
+  <block id="b4c6a2f33e7b2a38495546b8d5cd8e84" category="paragraph">请注意，此帐户必须是客户级别的帐户（而不是来宾或临时帐户）。</block>
+  <block id="fc65ebd4739f2f8ca46062a8280faea9" category="section-title">注册您的帐户以获得支持</block>
+  <block id="3e080914efe0d0ca025439fbb68d437f" category="paragraph">支持注册可从 Cloud Manager 的支持信息板中获取。</block>
+  <block id="fb07bf6b7698dbe934b8b2164d915484" category="list-text">在 * 资源 * 选项卡中，单击 * 注册支持 * 。</block>
+  <block id="392fb0270d0d84dbc3fdf8c67da1e5ad" category="list-text">选择要注册的 NSS 凭据，然后单击 * 注册 * 。</block>
+  <block id="e9c44bbfd795a5d63d74c6a77afee70d" category="paragraph">法律声明提供对版权声明、商标、专利等的访问。</block>
+  <block id="6016a2b341113bf496b719905398ecd2" category="section-title">版权</block>
+  <block id="09e95b77ffe81fe465a83ba99efad5c8" category="paragraph"><block ref="09e95b77ffe81fe465a83ba99efad5c8" category="inline-link-rx"></block></block>
+  <block id="126a02652da6de02962cf1b654fd6376" category="section-title">商标</block>
+  <block id="c4ce4761e466527d26b3e3d5ed1006fd" category="paragraph">NetApp 、 NetApp 徽标和 NetApp 商标页面上列出的标记是 NetApp 、 Inc. 的商标。其他公司和产品名称可能是其各自所有者的商标。</block>
+  <block id="7aa531e9acfe2b98e34d2c92fe9846ff" category="paragraph"><block ref="7aa531e9acfe2b98e34d2c92fe9846ff" category="inline-link-rx"></block></block>
+  <block id="be89498d2f8a22ce47c02ba9795fe2af" category="section-title">专利</block>
+  <block id="d0b19d36be2c5f16e9aef46c8a452d3d" category="paragraph">有关 NetApp 拥有的专利的最新列表，请访问：</block>
+  <block id="d7f1fbcf9ce4e42f705add574d262b2c" category="paragraph"><block ref="d7f1fbcf9ce4e42f705add574d262b2c" category="inline-link-rx"></block></block>
+  <block id="56c34c6410dd45c5cec44149ad0ce037" category="section-title">隐私政策</block>
+  <block id="fc248f74f5e36542f7f5627b8610e9a3" category="paragraph"><block ref="fc248f74f5e36542f7f5627b8610e9a3" category="inline-link-rx"></block></block>
+  <block id="c0227cef6f07a8cd2ac72f2945b031aa" category="section-title">开放源代码</block>
+  <block id="9b73989307c1975dfa4d5e1581e4afe8" category="paragraph">通知文件提供有关 NetApp 软件中使用的第三方版权和许可证的信息。</block>
+  <block id="51719eefc68685ac0e2a11057a44b8be" category="paragraph">NetApp 通过多种方式为 Cloud Manager 及其云服务提供支持。全天候提供丰富的免费自助支持选项，例如知识库（ KB ）文章和社区论坛。您的支持注册包括通过 Web 服务单提供的远程技术支持。</block>
+  <block id="07d41912a6ab6b97216f8cf89e93205c" category="section-title">自助支持</block>
+  <block id="5e4b821a1a82558dead1ef6961e90666" category="paragraph">这些选项每周 7 天，每天 24 小时免费提供：</block>
+  <block id="19111351b69b6b15668130b38b7f6038" category="inline-link">知识库</block>
+  <block id="fd6bb4fa1ad0caeedd6782d92cc54ea3" category="list-text"><block ref="fd6bb4fa1ad0caeedd6782d92cc54ea3" category="inline-link-rx"></block></block>
+  <block id="76b571fb5edea1c1994fa0ff01f7b1e2" category="paragraph">通过 Cloud Manager 知识库搜索，查找有助于解决问题的文章。</block>
+  <block id="14526abd8bda5af347775025cd5342cf" category="inline-link">社区</block>
+  <block id="410fdb9caa9c64da2ff3f88f4836960d" category="list-text"><block ref="410fdb9caa9c64da2ff3f88f4836960d" category="inline-link-rx"></block></block>
+  <block id="7f3490343cad8dc3bfdb72dd5d957e8d" category="paragraph">加入 Cloud Manager 社区，关注正在进行的讨论或创建新的讨论。</block>
+  <block id="5b6cf869265c13af8566f192b4ab3d2a" category="list-text">文档。</block>
+  <block id="3c313458d6e15dd2c4336e47118d0a8f" category="paragraph">您当前正在查看的 Cloud Manager 文档。</block>
+  <block id="80b1b0d2b1ebf2b3cba2d25759801afd" category="list-text">mailto ： ng-cloudmanager-feedback@netapp.com （反馈电子邮件）</block>
+  <block id="bff60abbc46aceed0f73a3a4f6cfb123" category="paragraph">我们非常重视您的反馈意见。提交反馈以帮助我们改进 Cloud Manager 。</block>
+  <block id="0659d428df833a806e29e65e632d380a" category="section-title">NetApp 支持</block>
+  <block id="c91b5a63849b8d2db01014ed33192735" category="paragraph">除了上述自助支持选项之外，您还可以在激活支持后与 NetApp 支持工程师合作解决任何问题。</block>
+  <block id="6c08c57e382a25a778455184cd9b1a4a" category="list-text">在 Cloud Manager 中，单击 * 帮助 &gt; 支持 * 。</block>
+  <block id="f5052c65917d7341726235d4d4941461" category="list-text">在 "Technical Support" 下选择一个可用选项：</block>
+  <block id="bece28b158ab337d9ed24b00d7d02cc7" category="list-text">单击 * 致电我们 * 可查找 NetApp 技术支持的电话号码。</block>
+  <block id="efe81cff8e6f47ec59ef94167b76bf5a" category="list-text">单击 * 打开问题描述 * ，选择一个选项，然后单击 * 发送 * 。</block>
+  <block id="cbb1040836732e478409dacf7e45171a" category="paragraph">NetApp 代表将审核您的案例，并尽快与您联系。</block>
 </blocks>

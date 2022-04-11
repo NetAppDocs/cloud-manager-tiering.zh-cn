@@ -6,6 +6,7 @@ summary: 在设置数据分层前后运行云性能测试，以测量从 ONTAP �
 ---
 = 测量网络延迟和吞吐量性能
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

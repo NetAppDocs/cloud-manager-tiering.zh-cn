@@ -7,6 +7,7 @@ summary: Cloud Tiering 可将内部 ONTAP 集群中的非活动数据自动分�
 ---
 = Cloud Tiering 文档
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

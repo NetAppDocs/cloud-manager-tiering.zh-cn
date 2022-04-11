@@ -5,8 +5,50 @@ keywords: support registration, register for support, support, nss account, add 
 summary: 在向 NetApp 技术支持创建支持案例之前，您需要先将 NetApp 支持站点帐户添加到 Cloud Manager 中，然后注册获取支持。 
 ---
 = 注册以获得支持
+:allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
-link:https://raw.githubusercontent.com/NetAppDocs/cloud-manager-family/main/_include/support-registration.adoc[""]
+在向 NetApp 技术支持创建支持案例之前，您需要先将 NetApp 支持站点帐户添加到 Cloud Manager 中，然后注册获取支持。
+
+
+
+== 添加 NSS 帐户
+
+通过支持信息板，您可以从一个位置添加和管理所有 NetApp 支持站点帐户。
+
+.步骤
+. 如果您还没有 NetApp 支持站点帐户， https://register.netapp.com/register/start["注册一个"^]。
+. 在 Cloud Manager 控制台右上角，单击帮助图标，然后选择 * 支持 * 。
++
+image:https://raw.githubusercontent.com/NetAppDocs/cloud-manager-family/main/media/screenshot-help-support.png["帮助菜单的屏幕截图，其中列出的第一个选项为支持"]
+
+. 单击 * NSS 管理 > 添加 NSS 帐户 * 。
+. 出现提示时，单击 * 继续 * 以重定向到 Microsoft 登录页面。
++
+NetApp 使用 Microsoft Azure Active Directory 作为身份提供程序来提供特定于支持和许可的身份验证服务。
+
+. 在登录页面上，提供 NetApp 支持站点注册的电子邮件地址和密码以执行身份验证过程。
++
+此操作可使 Cloud Manager 使用您的 NSS 帐户。
+
++
+请注意，此帐户必须是客户级别的帐户（而不是来宾或临时帐户）。
+
+
+
+
+
+== 注册您的帐户以获得支持
+
+支持注册可从 Cloud Manager 的支持信息板中获取。
+
+.步骤
+. 在 Cloud Manager 控制台右上角，单击帮助图标，然后选择 * 支持 * 。
++
+image:https://raw.githubusercontent.com/NetAppDocs/cloud-manager-family/main/media/screenshot-help-support.png["帮助菜单的屏幕截图，其中列出的第一个选项为支持"]
+
+. 在 * 资源 * 选项卡中，单击 * 注册支持 * 。
+. 选择要注册的 NSS 凭据，然后单击 * 注册 * 。
+

@@ -6,6 +6,7 @@ summary: 现在，您已从内部 ONTAP 集群设置了数据分层，您可以�
 ---
 = 从集群管理数据分层
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

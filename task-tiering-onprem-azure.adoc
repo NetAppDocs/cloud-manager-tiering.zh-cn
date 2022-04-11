@@ -6,6 +6,7 @@ summary: 通过将非活动数据分层到 Azure Blob 存储，在内部 ONTAP �
 ---
 = 将数据从内部 ONTAP 集群分层到 Azure Blob 存储
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
