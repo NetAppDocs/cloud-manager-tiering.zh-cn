@@ -691,7 +691,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-04-18 08:18:51 +0000">04/18/2022</time>
+    <time datetime="2022-05-04 13:02:08 +0000">05/04/2022</time>
     
   
 
@@ -850,10 +850,10 @@ Your browser does not support the video tag.
 <div class="sect2">
 <h3 id="自-2021-年-8-月-21-日起推出全新-cloud-tiering-byol-许可">自 2021 年 8 月 21 日起推出全新 Cloud Tiering BYOL 许可</h3>
 <div class="paragraph">
-<p>全新的 * 云分层 * 许可证于 2021 年 8 月推出，适用于使用 Cloud Tiering 服务的 Cloud Manager 中支持的分层配置。Cloud Manager 目前支持分层到以下云存储： Amazon S3 ， Azure Blob 存储， Google 云存储， S3 兼容对象存储和 StorageGRID 。</p>
+<p>全新的 * 云分层 * 许可证于 2021 年 8 月推出，适用于使用 Cloud Tiering 服务的 Cloud Manager 中支持的分层配置。Cloud Manager目前支持分层到以下云存储：Amazon S3、Azure Blob存储、Google云存储、S3兼容对象存储、IBM云对象存储和StorageGRID。</p>
 </div>
 <div class="paragraph">
-<p>您过去用于将内部 ONTAP 数据分层到云的 * FabricPool 许可证仅保留用于无法访问 Internet 的站点（也称为 " 非公开站点 " ）中的 ONTAP 部署。如果您部署的是非公开站点，则可以使用 System Manager 或 ONTAP 命令行界面在每个集群上安装 FabricPool 许可证。</p>
+<p>您过去可能用于将内部ONTAP 数据分层到云的*镜像*许可证仅适用于无法访问互联网的站点(也称为"非公开站点")中的ONTAP 部署或使用FabricPool 镜像的FabricPool MetroCluster 系统。如果您使用的是这些配置、则可以使用System Manager或ONTAP 命令行界面在每个集群上安装FabricPool 许可证。</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -1034,6 +1034,105 @@ Your browser does not support the video tag.
 </div>
 <div class="paragraph">
 <p>Cloud Manager 会更新许可证，以便 Cloud Tiering 服务继续处于活动状态。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="将cloud-tiering许可证应用于特殊配置中的集群">将Cloud Tiering许可证应用于特殊配置中的集群</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>以下配置中的ONTAP 集群可以使用云分层许可证、但应用方式必须与典型的单节点和HA配置ONTAP 集群不同：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>分层镜像配置中的集群(连接到两个对象存储的集群)</p>
+<div class="paragraph">
+<p>目前不支持使用MetroCluster 配置的FabricPool 镜像</p>
+</div>
+</li>
+<li>
+<p>分层到IBM Cloud Object Storage的集群</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="具有fabricpool-许可证的现有集群的进程">具有FabricPool 许可证的现有集群的进程</h3>
+<div class="paragraph">
+<p>当您 <a href="task-managing-tiering.html#discovering-additional-clusters-from-cloud-tiering">"在Cloud Tiering中发现任何这些特殊集群类型"</a>、Cloud Tiering可识别FabricPool 许可证、并将该许可证添加到数字市场。这些集群将继续照常对数据进行分层。FabricPool 许可证过期后、您需要购买Cloud Tiering许可证。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="新创建集群的进程">新创建集群的进程</h3>
+<div class="paragraph">
+<p>在Cloud Tiering中发现典型集群时、您将使用Cloud Tiering界面配置分层。在这些情况下、将执行以下操作：</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>"父"云分层许可证可跟踪所有集群用于分层的容量、以确保许可证中有足够的容量</p>
+</li>
+<li>
+<p>每个集群都会自动安装一个"子"分层许可证、以便与Digital Wallet中的"父"许可证进行通信</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>对于上述两种配置、您需要使用System Manager或ONTAP 命令行界面(而不是使用云分层界面)配置分层。因此、在这些情况下、您需要从Cloud Tiering界面手动将"子"许可证推送到这些集群。</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/cloud-manager-tiering/images/tip.svg" alt="提示">
+</td>
+<td class="content">
+由于在分层镜像配置中、数据会分层到两个不同的对象存储位置、因此您需要购买具有足够容量的许可证、以便分层到这两个位置。
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<div class="title">步骤</div>
+<ol class="arabic">
+<li>
+<p>使用System Manager或ONTAP 命令行界面安装和配置ONTAP 集群。</p>
+<div class="paragraph">
+<p>此时请勿配置分层。</p>
+</div>
+</li>
+<li>
+<p><a href="task-licensing-cloud-tiering.html#use-a-cloud-tiering-byol-license">"购买Cloud Tiering许可证"</a> 新集群所需的容量。</p>
+</li>
+<li>
+<p>在Cloud Manager中、 <a href="task-licensing-cloud-tiering.html#add-cloud-tiering-byol-licenses-to-your-account">"将许可证添加到Digital Wallet中"</a>。</p>
+</li>
+<li>
+<p>在Cloud Tiering中、 <a href="task-managing-tiering.html#discovering-additional-clusters-from-cloud-tiering">"发现新集群"</a>。</p>
+</li>
+<li>
+<p>在集群信息板中、单击 <span class="image"><img src="./media/screenshot_horizontal_more_button.gif" alt="更多图标"></span> 并选择*部署许可证*。</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_tiering_deploy_license.png" alt="显示如何将分层许可证部署到ONTAP 集群的屏幕截图。"></span></p>
+</div>
+</li>
+<li>
+<p>在_Deploy License_对话框中、单击*部署*。</p>
+<div class="paragraph">
+<p>子许可证将部署到ONTAP 集群。</p>
+</div>
+</li>
+<li>
+<p>返回到System Manager或ONTAP 命令行界面并设置分层配置。</p>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/ontap/fabricpool/manage-mirrors-task.html" target="_blank" rel="noopener">"FabricPool 镜像配置信息"</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/ontap/fabricpool/setup-ibm-object-storage-cloud-tier-task.html" target="_blank" rel="noopener">"分层到IBM Cloud Object Storage信息"</a></p>
+</div>
+</li>
+</ol>
 </div>
 </div>
 </div>
