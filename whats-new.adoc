@@ -18,13 +18,23 @@ summary: 了解 Cloud Tiering 的新增功能。
 
 
 
+== 2022年5月3日
+
+
+
+=== 为其他集群配置提供Cloud Tiering许可证支持
+
+现在、可以与分层镜像配置(不包括MetroCluster 配置)中的集群以及分层到IBM云对象存储的集群共享云分层许可证。在这些情况下、您不再需要使用已弃用的FabricPool 许可证。这样可以更轻松地在更多集群上使用"浮动"云分层许可证。 https://docs.netapp.com/us-en/cloud-manager-tiering/task-licensing-cloud-tiering.html#apply-cloud-tiering-licenses-to-clusters-in-special-configurations["请参见如何许可和配置这些类型的集群。"]
+
+
+
 == 2022 年 4 月 4 日
 
 
 
 === Amazon S3 Glacier 即时检索存储类现已推出
 
-设置 Cloud Tiering 时，现在您可以配置生命周期规则，以便在一定天数后将非活动数据从 _Standard_ 存储类过渡到 _Glacier 即时检索 _ 。这将有助于降低 AWS 基础架构成本。
+设置 Cloud Tiering 时，现在您可以配置生命周期规则，以便在一定天数后将非活动数据从 _Standard_ 存储类过渡到 _Glacier 即时检索 _ 。这将有助于降低 AWS 基础架构成本。 https://docs.netapp.com/us-en/cloud-manager-tiering/reference-aws-support.html["请参见支持的S3存储类。"]
 
 
 

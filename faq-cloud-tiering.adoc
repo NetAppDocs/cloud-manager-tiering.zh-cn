@@ -39,7 +39,7 @@ summary: 如果您只是想快速了解问题解答，此常见问题解答会�
 
 === 支持哪些类型的 ONTAP 系统？
 
-AFF ， FAS 和 ONTAP Select 系统支持云分层。
+单节点和高可用性AFF 、FAS 和ONTAP Select 集群支持云分层。此外、还支持FabricPool 镜像配置中的集群、但此配置必须使用System Manager或ONTAP 命令行界面完成。
 
 
 
@@ -76,7 +76,15 @@ Cloud Volumes ONTAP 系统是从云分层进行的只读系统。您无法通过
 
 === 支持哪些对象存储提供程序？
 
-支持 Amazon S3 ， Azure Blob Storage ， Google Cloud Storage ， NetApp StorageGRID 和 S3 兼容对象存储提供程序。
+Cloud Tiering支持以下对象存储提供程序：
+
+* Amazon S3
+* Microsoft Azure Blob
+* Google Cloud 存储
+* NetApp StorageGRID
+* 与 S3 兼容的对象存储
+* IBM云对象存储(但FabricPool 配置必须使用System Manager或ONTAP 命令行界面完成)
+
 
 
 

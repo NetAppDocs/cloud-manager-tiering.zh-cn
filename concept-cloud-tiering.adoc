@@ -18,10 +18,9 @@ NetApp 的云分层服务可将内部 ONTAP 集群中的非活动数据自动分
 
 FabricPool 分层服务利用了 _Cloud Tier_ 的功能。FabricPool 是一种 NetApp Data Fabric 技术，可将数据自动分层到低成本的对象存储。活动数据（热数据）保留在本地层（内部 ONTAP 聚合）上，而非活动数据（冷数据）则移至云层，同时保持 ONTAP 数据效率。
 
-最初在采用纯 SSD 聚合的 AFF 和 FAS 系统上受支持，从 ONTAP 9.8 开始，除了高性能 SSD 之外，您还可以对包含 HDD 的聚合中的数据进行分层。请参见 https://docs.netapp.com/us-en/ontap/fabricpool/requirements-concept.html["使用 FabricPool 的注意事项和要求"^] 了解详细信息。
+最初在采用纯SSD聚合的AFF 、FAS 和ONTAP Select 系统上受支持、从ONTAP 9.8开始、除了高性能SSD之外、您还可以对包含HDD的聚合中的数据进行分层。请参见 https://docs.netapp.com/us-en/ontap/fabricpool/requirements-concept.html["使用 FabricPool 的注意事项和要求"^] 了解详细信息。
 
-
-TIP: AFF ， FAS 和 ONTAP Select 系统支持云分层。
+此外、还可以与FabricPool 镜像配置(不包括MetroCluster 配置)中的集群共享云分层许可证。FabricPool 配置必须使用System Manager或ONTAP 命令行界面完成、但是 https://docs.netapp.com/us-en/cloud-manager-tiering/task-licensing-cloud-tiering.html#apply-cloud-tiering-licenses-to-clusters-in-special-configurations["此类集群的许可可通过Cloud Tiering完成。"]
 
 
 
@@ -54,6 +53,8 @@ TIP: Cloud Volumes ONTAP 系统是从云分层进行的只读系统。 https://d
 * 与 S3 兼容的对象存储
 * NetApp StorageGRID
 
+
+也可以与要将数据分层到IBM Cloud Object Storage的集群共享Cloud Tiering许可证。FabricPool 配置必须使用System Manager或ONTAP 命令行界面完成、但是 https://docs.netapp.com/us-en/cloud-manager-tiering/task-licensing-cloud-tiering.html#apply-cloud-tiering-licenses-to-clusters-in-special-configurations["此类配置的许可使用Cloud Tiering完成。"]
 
 
 NOTE: 您可以将数据从 NAS 卷分层到公有云或私有云，例如 StorageGRID 。在对 SAN 协议访问的数据进行分层时，由于连接方面的考虑， NetApp 建议使用私有云。
