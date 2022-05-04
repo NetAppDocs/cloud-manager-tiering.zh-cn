@@ -691,7 +691,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-05-04 13:02:08 +0000">05/04/2022</time>
+    <time datetime="2022-05-04 19:46:20 +0000">05/04/2022</time>
     
   
 
@@ -706,76 +706,229 @@
 </div>
 </div>
 <div class="sect1">
+<h2 id="云分层服务">云分层服务</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>以下常见问题解答与Cloud Tiering的工作原理有关。</p>
+</div>
+<div class="sect2">
+<h3 id="使用cloud-tiering服务有哪些优势">使用Cloud Tiering服务有哪些优势？</h3>
+<div class="paragraph">
+<p>Cloud Tiering可应对数据快速增长带来的挑战、为您提供以下优势：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>轻松地将数据中心扩展到云、可提供高达50倍的空间</p>
+</li>
+<li>
+<p>存储优化、平均可节省70%的存储空间</p>
+</li>
+<li>
+<p>平均而言、总拥有成本降低30%</p>
+</li>
+<li>
+<p>无需重构应用程序</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="哪种类型的数据可用于分层到云">哪种类型的数据可用于分层到云？</h3>
+<div class="paragraph">
+<p>从本质上讲、主存储系统和二级存储系统上被视为非活动的任何数据都是迁移到云的理想目标。在主系统上、此类数据可以包括快照、历史记录和已完成项目。在二级系统上、这包括包含用于灾难恢复和备份的主数据副本的所有卷。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="是否可以对nas卷和san卷中的数据进行分层">是否可以对NAS卷和SAN卷中的数据进行分层？</h3>
+<div class="paragraph">
+<p>可以、您可以将数据从NAS卷分层到公有 云或私有云、例如StorageGRID。在分层通过SAN协议访问的数据时、NetApp建议使用私有云、因为SAN协议比NAS更容易受到连接问题的影响。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="非活动数据或不常用数据的定义是什么如何控制">非活动数据或不常用数据的定义是什么？如何控制？</h3>
+<div class="paragraph">
+<p>冷数据的定义也可以称为："已有一段时间未访问的卷块(元数据除外)"。"时间量"由名为cooling-days的分层策略属性确定。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cloud-tiering是否会在云层中保留我节省的存储效率">Cloud Tiering是否会在云层中保留我节省的存储效率？</h3>
+<div class="paragraph">
+<p>是的、将数据移至云层时、ONTAP 卷级存储效率会得到保留、例如数据压缩、重复数据删除和数据缩减。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="fabricpool-与云分层之间有何区别">FabricPool 与云分层之间有何区别？</h3>
+<div class="paragraph">
+<p>FabricPool 是ONTAP的分层技术、可以通过ONTAP 命令行界面和System Manager进行自我管理、也可以通过云分层作为服务进行管理。云分层可将FabricPool 转变为一种托管服务、在ONTAP 和云端均采用高级自动化流程、从而提高混合云和多云部署之间分层的可见性和控制力。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="分层到云的数据是否可用于灾难恢复或备份归档">分层到云的数据是否可用于灾难恢复或备份/归档？</h3>
+<div class="paragraph">
+<p>否由于卷的元数据从不从性能层分层、因此无法直接访问存储在对象存储中的数据。</p>
+</div>
+<div class="paragraph">
+<p>但是、可以使用Cloud Tiering在二级系统和SnapMirror目标卷(DP卷)上对所有数据(不包括元数据)进行分层、从而降低数据中心占用空间和TCO、从而实现经济高效的备份和灾难恢复。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="是否在卷或聚合级别应用cloud-tiering">是否在卷或聚合级别应用Cloud Tiering？</h3>
+<div class="paragraph">
+<p>通过将分层策略与每个卷关联、可以在卷级别启用Cloud Tiering。冷数据标识在块级别完成。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cloud-tiering如何确定要分层到云的块">Cloud Tiering如何确定要分层到云的块？</h3>
+<div class="paragraph">
+<p>与卷关联的分层策略是一种机制、用于控制分层块和分层时间。该策略定义数据块的类型(快照、用户数据或两者)以及冷却期。请参见 <a href="concept-cloud-tiering.html#volume-tiering-policies">"卷分层策略"</a> 了解详细信息。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cloud-tiering是否支持非活动数据报告">Cloud Tiering是否支持非活动数据报告？</h3>
+<div class="paragraph">
+<p>是的、Cloud Tiering在每个聚合上启用非活动数据报告(IDR)。通过此设置，我们可以确定可分层到低成本对象存储的非活动数据量。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="从开始运行时起idr显示信息需要多长时间">从开始运行时起、IDR显示信息需要多长时间？</h3>
+<div class="paragraph">
+<p>配置的冷却期过后、IDR将开始显示信息。使用ONTAP 9.7及更早版本时、IDR的冷却期不可调整、为31天。从ONTAP 9.8开始、可以配置最长为183天的IDR冷却期。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="许可证和成本">许可证和成本</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>以下常见问题解答与使用Cloud Tiering的许可和成本有关。</p>
+</div>
+<div class="sect2">
+<h3 id="使用cloud-tiering的成本是多少">使用Cloud Tiering的成本是多少？</h3>
+<div class="paragraph">
+<p>将冷数据分层到公有 云时：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>对于按需购买(PAYGO)、基于使用情况的订阅：每GB每月0.05美元。</p>
+</li>
+<li>
+<p>对于年度(BYOL)订阅、基于期限的订阅：从每GB每月0.033美元开始。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>将冷数据分层到NetApp StorageGRID 系统(私有云)时、无需任何成本。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="是否可以为同一ontap-集群同时提供byol和paygo许可证">是否可以为同一ONTAP 集群同时提供BYOL和PAYGO许可证？</h3>
+<div class="paragraph">
+<p>是的。通过Cloud Tiering、您可以使用BYOL许可证、PAYGO订阅或两者的组合。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="如果我已达到byol容量限制会发生什么情况">如果我已达到BYOL容量限制、会发生什么情况？</h3>
+<div class="paragraph">
+<p>如果达到BYOL容量限制、则新冷数据分层将停止、而以前分层的所有数据仍可访问。如果您订阅了_Cloud Manager - Deploy &amp; Manage Cloud Data Services_的PAYGO Marketplace、则新的冷数据将继续分层到对象存储、并且每次使用都会产生费用。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cloud-tiering许可证是否包括云提供商的出站费用">Cloud Tiering许可证是否包括云提供商的出站费用？</h3>
+<div class="paragraph">
+<p>不可以。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="内部系统的重新融合是否受云提供商收取的出口成本的影响">内部系统的重新融合是否受云提供商收取的出口成本的影响？</h3>
+<div class="paragraph">
+<p>是的。从公有 云进行的所有读取均需支付出站费用。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="如何估算我的云费用cloud-tiering是否有假设模式">如何估算我的云费用？Cloud Tiering是否有"假设"模式？</h3>
+<div class="paragraph">
+<p>估算云提供商托管数据所需的费用的最佳方法是使用其计算器： <a href="https://calculator.aws/#/">"AWS"</a>， <a href="https://azure.microsoft.com/en-us/pricing/calculator/">"Azure 酒店"</a> 和 <a href="https://cloud.google.com/products/calculator">"Google Cloud"</a>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="云提供商在从对象存储读取检索数据到内部存储时是否需要额外付费">云提供商在从对象存储读取/检索数据到内部存储时是否需要额外付费？</h3>
+<div class="paragraph">
+<p>是的。检查 <a href="https://aws.amazon.com/s3/pricing/">"Amazon S3定价"</a>， <a href="https://azure.microsoft.com/en-us/pricing/details/storage/blobs/">"块Blob定价"</a>，和 <a href="https://cloud.google.com/storage/pricing">"云存储定价"</a> 数据读取/检索产生的额外定价。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="在启用cloud-tiering之前如何估算卷节省的空间并获取冷数据报告">在启用Cloud Tiering之前、如何估算卷节省的空间并获取冷数据报告？</h3>
+<div class="paragraph">
+<p>要获得估计值、只需将ONTAP 集群添加到Cloud Manager中、然后通过"分层集群信息板"进行检查即可、该信息板位于"分层"选项卡中。如果禁用了非活动数据报告(IDR)或在足够长的时间内尚未激活、Cloud Tiering将使用70%的行业常数来计算预计节省量。获得IDR数据后、Cloud Tiering会将节省的空间更新为准确的数据。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="ontap">ONTAP</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>以下问题与 ONTAP 相关。</p>
 </div>
 <div class="sect2">
-<h3 id="ontap-集群有哪些要求">ONTAP 集群有哪些要求？</h3>
+<h3 id="cloud-tiering支持哪些ontap-版本">Cloud Tiering支持哪些ONTAP 版本？</h3>
 <div class="paragraph">
-<p>这取决于冷数据分层的位置。请参见以下内容：</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="task-tiering-onprem-aws.html#preparing-your-ontap-clusters">"将数据从内部 ONTAP 集群分层到 Amazon S3"</a></p>
-</li>
-<li>
-<p><a href="task-tiering-onprem-azure.html#preparing-your-ontap-clusters">"将数据从内部 ONTAP 集群分层到 Azure Blob 存储"</a></p>
-</li>
-<li>
-<p><a href="task-tiering-onprem-gcp.html#preparing-your-ontap-clusters">"将数据从内部 ONTAP 集群分层到 Google 云存储"</a></p>
-</li>
-<li>
-<p><a href="task-tiering-onprem-storagegrid.html#preparing-your-ontap-clusters">"将数据从内部 ONTAP 集群分层到 StorageGRID"</a></p>
-</li>
-<li>
-<p><a href="task-tiering-onprem-s3-compat.html#preparing-your-ontap-clusters">"将数据从内部 ONTAP 集群分层到 S3 对象存储"</a></p>
-</li>
-</ul>
+<p>Cloud Tiering支持ONTAP 9.2及更高版本。</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="支持哪些类型的-ontap-系统">支持哪些类型的 ONTAP 系统？</h3>
 <div class="paragraph">
-<p>单节点和高可用性AFF 、FAS 和ONTAP Select 集群支持云分层。此外、还支持FabricPool 镜像配置中的集群、但此配置必须使用System Manager或ONTAP 命令行界面完成。</p>
+<p>单节点和高可用性AFF 、FAS 和ONTAP Select 集群支持云分层。</p>
+</div>
+<div class="paragraph">
+<p>此外、还支持FabricPool 镜像配置中的集群、但分层配置必须使用System Manager或ONTAP 命令行界面完成。</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="cloud-tiering-是否支持非活动数据报告">Cloud Tiering 是否支持非活动数据报告？</h3>
+<h3 id="是否可以仅对使用hdd的fas-系统中的数据进行分层">是否可以仅对使用HDD的FAS 系统中的数据进行分层？</h3>
 <div class="paragraph">
-<p>可以， Cloud Tiering 支持在每个聚合上报告非活动数据。通过此设置，我们可以确定可分层到低成本对象存储的非活动数据量。</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<img src="/us-en/cloud-manager-tiering/images/note.svg" alt="注">
-</td>
-<td class="content">
-如果集群运行的是 ONTAP 9.6 或更高版本，则通过云分层可以对 HDD 聚合执行非活动数据报告。
-</td>
-</tr>
-</table>
+<p>可以、从ONTAP 9.8开始、您可以对HDD聚合上托管的卷中的数据进行分层。</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="是否可以对-nas-卷和-san-卷中的数据进行分层">是否可以对 NAS 卷和 SAN 卷中的数据进行分层？</h3>
+<h3 id="是否可以对加入到fas-节点使用hdd的集群中的aff-中的数据进行分层">是否可以对加入到FAS 节点使用HDD的集群中的AFF 中的数据进行分层？</h3>
 <div class="paragraph">
-<p>您可以将数据从 NAS 卷分层到公有云或私有云，例如 StorageGRID 。在对 SAN 协议访问的数据进行分层时，由于连接方面的考虑， NetApp 建议使用私有云。</p>
+<p>是的。可以配置Cloud Tiering、以便对任何聚合上托管的卷进行分层。数据分层配置与使用的控制器类型以及集群是否为异构集群无关。</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="cloud-volumes-ontap-如何">Cloud Volumes ONTAP 如何？</h3>
 <div class="paragraph">
-<p>如果您使用的是 Cloud Volumes ONTAP 系统，则可以在集群信息板中找到这些系统，以便您全面了解混合云基础架构中的数据分层。</p>
+<p>如果您使用的是Cloud Volumes ONTAP 系统、则可以在云分层集群信息板中找到这些系统、以便您全面了解混合云基础架构中的数据分层。但是、Cloud Volumes ONTAP 系统是从云分层进行的只读系统。您无法通过云分层在 Cloud Volumes ONTAP 上设置数据分层。 <a href="https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-tiering.html" target="_blank" rel="noopener">"您可以在 Cloud Manager 的工作环境中为 Cloud Volumes ONTAP 设置分层"</a>。</p>
 </div>
-<div class="paragraph">
-<p>在集群信息板中，您可以查看类似于内部 ONTAP 集群的分层信息：运行状况，当前节省量，节省机会，卷和聚合的详细信息等。</p>
 </div>
+<div class="sect2">
+<h3 id="ontap-集群还需要满足哪些其他要求">ONTAP 集群还需要满足哪些其他要求？</h3>
 <div class="paragraph">
-<p>Cloud Volumes ONTAP 系统是从云分层进行的只读系统。您无法通过云分层在 Cloud Volumes ONTAP 上设置数据分层。 <a href="https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-tiering.html" target="_blank" rel="noopener">"您可以在 Cloud Manager 的工作环境中为 Cloud Volumes ONTAP 设置分层"</a>。</p>
+<p>这取决于冷数据分层的位置。有关更多详细信息、请参见以下链接：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="task-tiering-onprem-aws.html#preparing-your-ontap-clusters">"将数据分层到Amazon S3"</a></p>
+</li>
+<li>
+<p><a href="task-tiering-onprem-azure.html#preparing-your-ontap-clusters">"将数据分层到Azure Blob存储"</a></p>
+</li>
+<li>
+<p><a href="task-tiering-onprem-gcp.html#preparing-your-ontap-clusters">"将数据分层到Google Cloud Storage"</a></p>
+</li>
+<li>
+<p><a href="task-tiering-onprem-storagegrid.html#preparing-your-ontap-clusters">"将数据分层到StorageGRID"</a></p>
+</li>
+<li>
+<p><a href="task-tiering-onprem-s3-compat.html#preparing-your-ontap-clusters">"将数据分层到S3对象存储"</a></p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -809,7 +962,7 @@
 <p>与 S3 兼容的对象存储</p>
 </li>
 <li>
-<p>IBM云对象存储(但FabricPool 配置必须使用System Manager或ONTAP 命令行界面完成)</p>
+<p>IBM云对象存储(FabricPool 配置必须使用System Manager或ONTAP 命令行界面完成)</p>
 </li>
 </ul>
 </div>
@@ -843,6 +996,18 @@
 </div>
 </div>
 <div class="sect2">
+<h3 id="为什么cloud-tiering不支持amazon-s3-glacier-flexible和s3-glacier-deep-archive">为什么Cloud Tiering不支持Amazon S3 Glacier Flexible和S3 Glacier Deep Archive？</h3>
+<div class="paragraph">
+<p>不支持Amazon S3 Glacier Flexible和S3 Glacier Deep Archive的主要原因是、云分层设计为高性能分层解决方案 、因此数据必须持续可用且可快速访问以供检索。借助S3 Glacier Flexible和S3 Glacier Deep Archive、数据检索可以在几分钟到48小时之间的任意位置进行。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="我是否可以将其他与s3兼容的对象存储服务例如wasabi与cloud-tiering结合使用">我是否可以将其他与S3兼容的对象存储服务(例如Wasabi)与Cloud Tiering结合使用？</h3>
+<div class="paragraph">
+<p>可以、使用ONTAP 9.8及更高版本的集群支持通过分层UI配置与S3兼容的对象存储。 <a href="task-tiering-onprem-s3-compat.html">"请参见此处的详细信息"</a>。</p>
+</div>
+</div>
+<div class="sect2">
 <h3 id="支持哪些-azure-blob-访问层">支持哪些 Azure Blob 访问层？</h3>
 <div class="paragraph">
 <p>Cloud Tiering 支持将非活动数据分层到 <em>hot</em> 或 <em>cool</em> 访问层。请参见 <a href="reference-azure-support.html">"支持的 Azure Blob 访问层"</a> 有关详细信息：</p>
@@ -861,6 +1026,57 @@
 </div>
 </div>
 <div class="sect2">
+<h3 id="是否可以将多个存储分段附加到同一聚合">是否可以将多个存储分段附加到同一聚合？</h3>
+<div class="paragraph">
+<p>为了进行镜像、每个聚合最多可以附加两个分段、其中冷数据会同步分层到两个分段。这些存储分段可以来自不同的提供程序和不同的位置。但是、目前不支持通过Cloud Tiering UI进行配置—可通过System Manager或CLI进行设置。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="是否可以将不同的分段附加到同一集群中的不同聚合">是否可以将不同的分段附加到同一集群中的不同聚合？</h3>
+<div class="paragraph">
+<p>是的。一般最佳实践是将一个存储分段附加到多个聚合。但是、在使用公有 云时、对象存储服务的IOPS上限为、因此必须考虑多个存储分段。但是、目前不支持通过Cloud Tiering UI进行配置—可通过System Manager或CLI进行设置。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="将卷从一个集群迁移到另一个集群时分层数据会发生什么情况">将卷从一个集群迁移到另一个集群时、分层数据会发生什么情况？</h3>
+<div class="paragraph">
+<p>将卷从一个集群迁移到另一个集群时、所有冷数据都将从云层读取。目标集群上的写入位置取决于是否启用了分层以及源卷和目标卷上使用的分层策略类型。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="将卷从同一集群中的一个节点移动到另一个节点时分层数据会发生什么情况">将卷从同一集群中的一个节点移动到另一个节点时、分层数据会发生什么情况？</h3>
+<div class="paragraph">
+<p>如果目标聚合没有附加云层、则会从源聚合的云层读取数据、并将其完全写入目标聚合的本地层。如果目标聚合附加了云层、则会从源聚合的云层中读取数据、然后先将其写入目标聚合的本地层、以便于快速转换。之后、根据所使用的分层策略、它将写入到云层。</p>
+</div>
+<div class="paragraph">
+<p>从ONTAP 9.6开始、如果目标聚合与源聚合使用相同的云层、则冷数据不会移回本地层。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="如何将分层数据恢复到内部">如何将分层数据恢复到内部？</h3>
+<div class="paragraph">
+<p>回写通常在读取时执行、具体取决于分层策略类型。在ONTAP 9.8之前的版本中、可以通过卷移动操作来回写整个卷。9.8之后、分层UI可选择*恢复所有数据*或*恢复活动文件系统*。 <a href="task-managing-tiering.html#migrating-data-from-the-cloud-tier-back-to-the-performance-tier">"了解如何将数据移回性能层"</a>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="将现有afffas控制器更换为新控制器时是否会将分层数据迁移回内部">将现有AFF/FAS控制器更换为新控制器时、是否会将分层数据迁移回内部？</h3>
+<div class="paragraph">
+<p>否在"机头交换"操作步骤 期间、唯一需要更改的是聚合的所有权。在这种情况下、它将更改为新控制器、而不会发生任何数据移动。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="是否可以在灾难恢复期间使用分层数据恢复卷或系统">是否可以在灾难恢复期间使用分层数据恢复卷或系统？</h3>
+<div class="paragraph">
+<p>否由于卷的元数据始终存储在本地性能层上、因此如果发生灾难且本地层丢失、则元数据也会丢失、无法引用分层数据。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="我是否可以使用云提供商的控制台或对象存储探索器查看分层到存储分层的数据是否可以在不使用ontap-的情况下直接使用存储在对象存储中的数据">我是否可以使用云提供商的控制台或对象存储探索器查看分层到存储分层的数据？是否可以在不使用ONTAP 的情况下直接使用存储在对象存储中的数据？</h3>
+<div class="paragraph">
+<p>否构建并分层到云的对象不包含单个文件、而是包含来自多个文件的多达1、024个4 KB块。卷的元数据始终保留在本地层上。</p>
+</div>
+</div>
+<div class="sect2">
 <h3 id="是否可以将策略应用于对象存储以便在不分层的情况下移动数据">是否可以将策略应用于对象存储，以便在不分层的情况下移动数据？</h3>
 <div class="paragraph">
 <p>是的。您可以启用生命周期管理，以便 Cloud Tiering 在一定天数后将数据从默认存储类 / 访问层过渡到更经济高效的层。</p>
@@ -875,7 +1091,13 @@
 <h2 id="连接器">连接器</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>以下问题与连接器有关。</p>
+<p>以下问题与Cloud Manager Connector相关。</p>
+</div>
+<div class="sect2">
+<h3 id="什么是连接器">什么是连接器？</h3>
+<div class="paragraph">
+<p>Connector是在您的云帐户或内部环境中的计算实例上运行的软件、可使Cloud Manager安全地管理云资源。要使用Cloud Tiering服务、您必须部署Connector。</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="连接器需要安装在何处">连接器需要安装在何处？</h3>
@@ -896,13 +1118,102 @@
 </ul>
 </div>
 </div>
+<div class="sect2">
+<h3 id="是否可以在内部部署此连接器">是否可以在内部部署此连接器？</h3>
+<div class="paragraph">
+<p>是的。您可以下载Connector软件并将其手动安装在网络中的Linux主机上。 <a href="https://docs.netapp.com/us-en/cloud-manager-setup-admin/task-installing-linux.html">"请参见如何在内部安装Connector"</a>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="在使用cloud-tiering之前是否需要云服务提供商的帐户">在使用Cloud Tiering之前、是否需要云服务提供商的帐户？</h3>
+<div class="paragraph">
+<p>是的。您必须先拥有帐户、然后才能定义要使用的对象存储。在VPC或vNet上的云中设置Connector时、还需要在云存储提供商处创建帐户。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="如果连接器发生故障会产生什么影响">如果连接器发生故障、会产生什么影响？</h3>
+<div class="paragraph">
+<p>如果发生连接器故障、则只会影响对分层环境的可见性。所有数据均可访问、新识别的冷数据会自动分层到对象存储。</p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="网络">网络</h2>
+<h2 id="分层策略">分层策略</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="有哪些可用分层策略">有哪些可用分层策略？</h3>
+<div class="paragraph">
+<p>分层策略有四种：</p>
+</div>
+<div class="paragraph">
+<p>●None：将所有数据分类为始终处于热状态；防止将卷中的任何数据移动到对象存储。●冷快照(仅限Snapshot)：仅将冷快照块移至对象存储。●冷用户数据和快照(自动)：冷快照块和冷用户数据块都移动到对象存储。●所有用户数据(所有)：将所有数据分类为冷数据；立即将整个卷移动到对象存储。</p>
+</div>
+<div class="paragraph">
+<p><a href="concept-cloud-tiering.html#volume-tiering-policies">"详细了解分层策略"</a>。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="我的数据在哪一点被视为冷数据">我的数据在哪一点被视为冷数据？</h3>
+<div class="paragraph">
+<p>由于数据分层是在块级别完成的、因此在数据块在一段时间内未被访问后、该数据块将被视为冷数据、该时间段由分层策略的minimum-cooling-days属性定义。对于ONTAP 9.7及更早版本、适用范围为2-63天、或者从ONTAP 9.8开始、适用范围为2-183天。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="在将数据分层到云层之前数据的默认冷却期是多少">在将数据分层到云层之前、数据的默认冷却期是多少？</h3>
+<div class="paragraph">
+<p>冷Snapshot策略的默认冷却期为2天、而冷用户数据和快照的默认冷却期为31天。cooling-days参数不适用于所有分层策略。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="执行完整备份时是否从对象存储中检索到所有分层数据">执行完整备份时、是否从对象存储中检索到所有分层数据？</h3>
+<div class="paragraph">
+<p>在完整备份期间、将读取所有冷数据。数据的检索取决于所使用的分层策略。使用全部和冷用户数据和快照策略时、冷数据不会回写到性能层。使用冷快照策略时、只有在备份使用旧快照时、才会检索其冷数据块。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="是否可以为每个卷选择分层大小">是否可以为每个卷选择分层大小？</h3>
+<div class="paragraph">
+<p>否但是、您可以选择哪些卷符合分层条件、要分层的数据类型及其冷却期。这是通过将分层策略与该卷关联来实现的。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="所有用户数据策略是否是数据保护卷的唯一选项">所有用户数据策略是否是数据保护卷的唯一选项？</h3>
+<div class="paragraph">
+<p>否数据保护(DP)卷可以与三个可用策略中的任何一个相关联。源卷和目标(DP)卷上使用的策略类型决定了数据的写入位置。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="将卷的分层策略重置为无会重新融合冷数据还是仅阻止将来的冷数据块移动到云">将卷的分层策略重置为无会重新融合冷数据还是仅阻止将来的冷数据块移动到云？</h3>
+<div class="paragraph">
+<p>重置分层策略时不会发生重新融合、但它会阻止新的冷块移至云层。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="将数据分层到云后是否可以更改分层策略">将数据分层到云后、是否可以更改分层策略？</h3>
+<div class="paragraph">
+<p>是的。更改后的行为取决于新的关联策略。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="如果我要确保某些数据不会移动到云我应该怎么做">如果我要确保某些数据不会移动到云、我应该怎么做？</h3>
+<div class="paragraph">
+<p>请勿将分层策略与包含该数据的卷相关联。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="这些文件的元数据存储在何处">这些文件的元数据存储在何处？</h3>
+<div class="paragraph">
+<p>卷的元数据始终存储在本地的性能层上—它永远不会分层到云。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="网络和安全性">网络和安全性</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>以下问题与网络连接有关。</p>
+<p>以下问题与网络连接和安全性有关。</p>
 </div>
 <div class="sect2">
 <h3 id="网络连接要求是什么">网络连接要求是什么？</h3>
@@ -928,59 +1239,79 @@
 <div class="ulist">
 <ul>
 <li>
-<p><a href="task-tiering-onprem-aws.html">"将数据从内部 ONTAP 集群分层到 Amazon S3"</a></p>
+<p><a href="task-tiering-onprem-aws.html">"将数据分层到Amazon S3"</a></p>
 </li>
 <li>
-<p><a href="task-tiering-onprem-azure.html">"将数据从内部 ONTAP 集群分层到 Azure Blob 存储"</a></p>
+<p><a href="task-tiering-onprem-azure.html">"将数据分层到Azure Blob存储"</a></p>
 </li>
 <li>
-<p><a href="task-tiering-onprem-gcp.html">"将数据从内部 ONTAP 集群分层到 Google 云存储"</a></p>
+<p><a href="task-tiering-onprem-gcp.html">"将数据分层到Google Cloud Storage"</a></p>
 </li>
 <li>
-<p><a href="task-tiering-onprem-storagegrid.html">"将数据从内部 ONTAP 集群分层到 StorageGRID"</a></p>
+<p><a href="task-tiering-onprem-storagegrid.html">"将数据分层到StorageGRID"</a></p>
 </li>
 <li>
-<p><a href="task-tiering-onprem-s3-compat.html">"将数据从内部 ONTAP 集群分层到 S3 对象存储"</a></p>
+<p><a href="task-tiering-onprem-s3-compat.html">"将数据分层到S3对象存储"</a></p>
 </li>
 </ul>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="权限">权限</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>以下问题与权限有关。</p>
-</div>
 <div class="sect2">
-<h3 id="aws-需要哪些权限">AWS 需要哪些权限？</h3>
+<h3 id="为了管理存储在云中的冷数据我可以使用哪些工具进行监控和报告">为了管理存储在云中的冷数据、我可以使用哪些工具进行监控和报告？</h3>
 <div class="paragraph">
-<p>权限为必填项 <a href="task-tiering-onprem-aws.html#preparing-amazon-s3">"以管理 S3 存储分段"</a>。</p>
+<p>除云分层之外、 <a href="https://docs.netapp.com/us-en/active-iq-unified-manager/" target="_blank" rel="noopener">"Active IQ Unified Manager"</a> 和 <a href="https://docs.netapp.com/us-en/active-iq/index.html" target="_blank" rel="noopener">"Active IQ 数字顾问"</a> 可用于监控和报告。</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="azure-需要哪些权限">Azure 需要哪些权限？</h3>
+<h3 id="如果云提供商的网络链路出现故障会产生什么影响">如果云提供商的网络链路出现故障、会产生什么影响？</h3>
 <div class="paragraph">
-<p>除了您需要为 Cloud Manager 提供的权限之外，不需要任何额外的权限。</p>
+<p>如果发生网络故障、本地性能层将保持联机状态、热数据仍可访问。但是、已移至云层的块将无法访问、应用程序在尝试访问该数据时将收到错误消息。恢复连接后、所有数据都可以无缝访问。</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="google-cloud-platform-需要哪些权限">Google Cloud Platform 需要哪些权限？</h3>
+<h3 id="是否有网络带宽建议">是否有网络带宽建议？</h3>
 <div class="paragraph">
-<p>需要具有存储管理员权限 <a href="task-tiering-onprem-gcp.html#preparing-google-cloud-storage">"具有存储访问密钥的服务帐户"</a>。</p>
+<p>底层FabricPool 分层技术读取延迟取决于与云层的连接。尽管分层可在任何带宽上运行、但建议将集群间LIF放置在10 Gbps端口上、以提供足够的性能。对于此连接器、没有任何建议或带宽限制。</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="storagegrid-需要哪些权限">StorageGRID 需要哪些权限？</h3>
+<h3 id="用户尝试访问分层数据时是否存在任何延迟">用户尝试访问分层数据时是否存在任何延迟？</h3>
 <div class="paragraph">
-<p><a href="task-tiering-onprem-storagegrid.html#preparing-storagegrid">"需要 S3 权限"</a>。</p>
+<p>是的。云层不能提供与本地层相同的延迟、因为延迟取决于连接情况。为了估算对象存储的延迟和吞吐量、Cloud Tiering提供了一个云性能测试(基于ONTAP 对象存储配置程序)、可在连接对象存储后以及设置分层之前使用该测试。</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="与-s3-兼容的对象存储需要哪些权限">与 S3 兼容的对象存储需要哪些权限？</h3>
+<h3 id="如何保护数据安全">如何保护数据安全？</h3>
 <div class="paragraph">
-<p><a href="task-tiering-onprem-s3-compat.html#preparing-s3-compatible-object-storage">"需要 S3 权限"</a>。</p>
+<p>AES-256-GCM加密在性能层和云层上均保持不变。TLS 1.2加密用于在各层之间移动时对通过线缆传输的数据进行加密、以及对连接器与ONTAP 集群和对象存储之间的通信进行加密。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="是否需要在aff-上安装和配置以太网端口">是否需要在AFF 上安装和配置以太网端口？</h3>
+<div class="paragraph">
+<p>是的。必须在以太网端口上配置集群间LIF、该端口位于HA对中的每个节点上、该HA对托管包含您计划分层到云的数据的卷。有关详细信息、请参见计划对数据进行分层的云提供商的要求部分。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="需要哪些权限">需要哪些权限？</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="task-tiering-onprem-aws.html#preparing-amazon-s3">"对于Amazon、需要具有管理S3存储分段的权限"</a>。</p>
+</li>
+<li>
+<p>对于Azure、除了您需要为Cloud Manager提供的权限之外、不需要任何额外的权限。</p>
+</li>
+<li>
+<p><a href="task-tiering-onprem-gcp.html#preparing-google-cloud-storage">"对于Google Cloud、具有存储访问密钥的服务帐户需要具有存储管理员权限"</a>。</p>
+</li>
+<li>
+<p><a href="task-tiering-onprem-storagegrid.html#preparing-storagegrid">"对于StorageGRID 、需要S3权限"</a>。</p>
+</li>
+<li>
+<p><a href="task-tiering-onprem-s3-compat.html#preparing-s3-compatible-object-storage">"对于与S3兼容的对象存储、需要S3权限"</a>。</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
