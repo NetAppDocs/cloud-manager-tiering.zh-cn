@@ -220,11 +220,11 @@ Cloud Manager 会更新许可证，以便 Cloud Tiering 服务继续处于活动
 
 == 将Cloud Tiering许可证应用于特殊配置中的集群
 
-以下配置中的ONTAP 集群可以使用云分层许可证、但应用方式必须与典型的单节点和HA配置ONTAP 集群不同：
+以下配置中的ONTAP 集群可以使用云分层许可证、但应用此许可证的方式必须与典型的单节点和HA配置的ONTAP 集群不同：
 
 * 分层镜像配置中的集群(连接到两个对象存储的集群)
 +
-目前不支持使用MetroCluster 配置的FabricPool 镜像
+目前不支持使用FabricPool 镜像的MetroCluster 配置
 
 * 分层到IBM Cloud Object Storage的集群
 
