@@ -86,6 +86,12 @@ FabricPool 是ONTAP的分层技术、可以通过ONTAP 命令行界面和System 
 
 
 
+=== Cloud Tiering如何影响卷容量？
+
+Cloud Tiering不会影响卷的容量、而是影响聚合的性能层使用情况。
+
+
+
 === Cloud Tiering是否支持非活动数据报告？
 
 是的、Cloud Tiering在每个聚合上启用非活动数据报告(IDR)。通过此设置，我们可以确定可分层到低成本对象存储的非活动数据量。
@@ -274,6 +280,12 @@ Cloud Tiering 支持将数据分层到 _Standard_ ， _Nearline_ ， _Coldline_ 
 
 
 
+=== Cloud Tiering是否支持使用生命周期管理策略？
+
+是的。您可以启用生命周期管理，以便 Cloud Tiering 在一定天数后将数据从默认存储类 / 访问层过渡到更经济高效的层。此生命周期规则将应用于 Amazon S3 和 Google Cloud 存储的选定存储分段中的所有对象，以及 Azure Blob 的选定存储帐户中的所有容器。
+
+
+
 === Cloud Tiering 是对整个集群使用一个对象存储还是对每个聚合使用一个对象存储？
 
 整个集群一个对象存储。
@@ -306,9 +318,9 @@ Cloud Tiering 支持将数据分层到 _Standard_ ， _Nearline_ ， _Coldline_ 
 
 
 
-=== 如何将分层数据恢复到内部？
+=== 如何将我的分层数据恢复到性能层内部？
 
-回写通常在读取时执行、具体取决于分层策略类型。在ONTAP 9.8之前的版本中、可以通过卷移动操作来回写整个卷。9.8之后、分层UI可选择*恢复所有数据*或*恢复活动文件系统*。 link:task-managing-tiering.html#migrating-data-from-the-cloud-tier-back-to-the-performance-tier["了解如何将数据移回性能层"]。
+回写通常在读取时执行、具体取决于分层策略类型。在ONTAP 9.8之前的版本中、可以使用_volume move"操作来回写整个卷。从ONTAP 9.8开始、分层UI可选择*恢复所有数据*或*恢复活动文件系统*。 link:task-managing-tiering.html#migrating-data-from-the-cloud-tier-back-to-the-performance-tier["了解如何将数据移回性能层"]。
 
 
 
@@ -327,14 +339,6 @@ Cloud Tiering 支持将数据分层到 _Standard_ ， _Nearline_ ， _Coldline_ 
 === 我是否可以使用云提供商的控制台或对象存储探索器查看分层到存储分层的数据？是否可以在不使用ONTAP 的情况下直接使用存储在对象存储中的数据？
 
 否构建并分层到云的对象不包含单个文件、而是包含来自多个文件的多达1、024个4 KB块。卷的元数据始终保留在本地层上。
-
-
-
-=== 是否可以将策略应用于对象存储，以便在不分层的情况下移动数据？
-
-是的。您可以启用生命周期管理，以便 Cloud Tiering 在一定天数后将数据从默认存储类 / 访问层过渡到更经济高效的层。
-
-此生命周期规则将应用于 Amazon S3 和 Google Cloud 存储的选定存储分段中的所有对象，以及 Azure Blob 的选定存储帐户中的所有容器。
 
 
 

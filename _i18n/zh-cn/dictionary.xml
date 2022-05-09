@@ -503,9 +503,6 @@
   <block id="a315b97ead114b01711324b00318fede" category="paragraph">Cloud Tiering 支持将数据分层到 _Standard_ ， _Nearline_ ， _Coldline_ 和 _Archive_ 存储类。请参见 <block ref="7bf35a231ca3eab0ba1eb206f6515726" category="inline-link-macro-rx"></block> 有关详细信息：</block>
   <block id="cbf85819c0ec3bd08aea6103a838e42f" category="section-title">Cloud Tiering 是对整个集群使用一个对象存储还是对每个聚合使用一个对象存储？</block>
   <block id="cb8d52e5219592f36bdfb68231d97d04" category="paragraph">整个集群一个对象存储。</block>
-  <block id="bda5b6e359cdbe29207c5288673c5583" category="section-title">是否可以将策略应用于对象存储，以便在不分层的情况下移动数据？</block>
-  <block id="76897a6305088a3a5d1fece5a33249ea" category="paragraph">是的。您可以启用生命周期管理，以便 Cloud Tiering 在一定天数后将数据从默认存储类 / 访问层过渡到更经济高效的层。</block>
-  <block id="984a9d1964e75fac051f5e1514887373" category="paragraph">此生命周期规则将应用于 Amazon S3 和 Google Cloud 存储的选定存储分段中的所有对象，以及 Azure Blob 的选定存储帐户中的所有容器。</block>
   <block id="fe4a785cf549e843e958f443c4baf0fe" category="section-title">连接器</block>
   <block id="417cf0f3678f81efde443c4a85c2acb8" category="section-title">连接器需要安装在何处？</block>
   <block id="ca4f429ffa25591e74f6645a3406d7cd" category="list-text">将数据分层到 S3 时， Connector 可以驻留在 AWS VPC 中或您的内部环境中。</block>
@@ -1021,9 +1018,7 @@
   <block id="75e192e543376cd0700d28d7707c1400" category="section-title">将卷从同一集群中的一个节点移动到另一个节点时、分层数据会发生什么情况？</block>
   <block id="c8e8c3de3c7e9a3523115f25ca436702" category="paragraph">如果目标聚合没有附加云层、则会从源聚合的云层读取数据、并将其完全写入目标聚合的本地层。如果目标聚合附加了云层、则会从源聚合的云层中读取数据、然后先将其写入目标聚合的本地层、以便于快速转换。之后、根据所使用的分层策略、它将写入到云层。</block>
   <block id="4eb0e04ff79ba8e58d2cc578b23ac20a" category="paragraph">从ONTAP 9.6开始、如果目标聚合与源聚合使用相同的云层、则冷数据不会移回本地层。</block>
-  <block id="67c448fda360e613a946c8d4f3fe8903" category="section-title">如何将分层数据恢复到内部？</block>
   <block id="594e5f8f87d3f9aee64730282f1d9d11" category="inline-link-macro">了解如何将数据移回性能层</block>
-  <block id="4f73c67002a9ff6531da278f92c08e2e" category="paragraph">回写通常在读取时执行、具体取决于分层策略类型。在ONTAP 9.8之前的版本中、可以通过卷移动操作来回写整个卷。9.8之后、分层UI可选择*恢复所有数据*或*恢复活动文件系统*。 <block ref="5fc989c9b1011f539a0df96bd559f635" category="inline-link-macro-rx"></block>。</block>
   <block id="5b9fbe75fbcd16763752424288950fad" category="section-title">将现有AFF/FAS控制器更换为新控制器时、是否会将分层数据迁移回内部？</block>
   <block id="954ab271743046342c8c477272ccf1e2" category="paragraph">否在"机头交换"操作步骤 期间、唯一需要更改的是聚合的所有权。在这种情况下、它将更改为新控制器、而不会发生任何数据移动。</block>
   <block id="9ae27577765a14f9c236003effe69e5e" category="section-title">是否可以在灾难恢复期间使用分层数据恢复卷或系统？</block>
@@ -1097,4 +1092,10 @@
   <block id="de865f0ebc8f66fc8e1331d7e2a7f1d4" category="list-text"><block ref="2efc8cc4b2027ed3eb0bfad94737c839" category="inline-link-macro-rx"></block>。</block>
   <block id="5904ecfefb0147d2c35e92234f70dbd9" category="paragraph">以下配置中的ONTAP 集群可以使用云分层许可证、但应用此许可证的方式必须与典型的单节点和HA配置的ONTAP 集群不同：</block>
   <block id="4bf0695d13fdb9614e4d0abba617654f" category="paragraph">目前不支持使用FabricPool 镜像的MetroCluster 配置</block>
+  <block id="6ace93b12d62dd3912b132e79298337d" category="section-title">Cloud Tiering如何影响卷容量？</block>
+  <block id="9edbed19ba22406e2515654036d6d7af" category="paragraph">Cloud Tiering不会影响卷的容量、而是影响聚合的性能层使用情况。</block>
+  <block id="bd661fa541ade4c845ce21fee80a6364" category="section-title">Cloud Tiering是否支持使用生命周期管理策略？</block>
+  <block id="ab432a40ce280c4620566a0570350625" category="paragraph">是的。您可以启用生命周期管理，以便 Cloud Tiering 在一定天数后将数据从默认存储类 / 访问层过渡到更经济高效的层。此生命周期规则将应用于 Amazon S3 和 Google Cloud 存储的选定存储分段中的所有对象，以及 Azure Blob 的选定存储帐户中的所有容器。</block>
+  <block id="864bccaf8b856c65bcec49d71eaad8e6" category="section-title">如何将我的分层数据恢复到性能层内部？</block>
+  <block id="f8677b4c8b811cc562ebfa540cd716ff" category="paragraph">回写通常在读取时执行、具体取决于分层策略类型。在ONTAP 9.8之前的版本中、可以使用_volume move"操作来回写整个卷。从ONTAP 9.8开始、分层UI可选择*恢复所有数据*或*恢复活动文件系统*。 <block ref="5fc989c9b1011f539a0df96bd559f635" category="inline-link-macro-rx"></block>。</block>
 </blocks>
