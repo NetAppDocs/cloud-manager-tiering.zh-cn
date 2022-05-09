@@ -691,7 +691,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-05-04 19:46:20 +0000">05/04/2022</time>
+    <time datetime="2022-05-09 15:04:58 +0000">05/09/2022</time>
     
   
 
@@ -782,6 +782,12 @@
 <h3 id="cloud-tiering如何确定要分层到云的块">Cloud Tiering如何确定要分层到云的块？</h3>
 <div class="paragraph">
 <p>与卷关联的分层策略是一种机制、用于控制分层块和分层时间。该策略定义数据块的类型(快照、用户数据或两者)以及冷却期。请参见 <a href="concept-cloud-tiering.html#volume-tiering-policies">"卷分层策略"</a> 了解详细信息。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cloud-tiering如何影响卷容量">Cloud Tiering如何影响卷容量？</h3>
+<div class="paragraph">
+<p>Cloud Tiering不会影响卷的容量、而是影响聚合的性能层使用情况。</p>
 </div>
 </div>
 <div class="sect2">
@@ -1020,6 +1026,12 @@
 </div>
 </div>
 <div class="sect2">
+<h3 id="cloud-tiering是否支持使用生命周期管理策略">Cloud Tiering是否支持使用生命周期管理策略？</h3>
+<div class="paragraph">
+<p>是的。您可以启用生命周期管理，以便 Cloud Tiering 在一定天数后将数据从默认存储类 / 访问层过渡到更经济高效的层。此生命周期规则将应用于 Amazon S3 和 Google Cloud 存储的选定存储分段中的所有对象，以及 Azure Blob 的选定存储帐户中的所有容器。</p>
+</div>
+</div>
+<div class="sect2">
 <h3 id="cloud-tiering-是对整个集群使用一个对象存储还是对每个聚合使用一个对象存储">Cloud Tiering 是对整个集群使用一个对象存储还是对每个聚合使用一个对象存储？</h3>
 <div class="paragraph">
 <p>整个集群一个对象存储。</p>
@@ -1053,9 +1065,9 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="如何将分层数据恢复到内部">如何将分层数据恢复到内部？</h3>
+<h3 id="如何将我的分层数据恢复到性能层内部">如何将我的分层数据恢复到性能层内部？</h3>
 <div class="paragraph">
-<p>回写通常在读取时执行、具体取决于分层策略类型。在ONTAP 9.8之前的版本中、可以通过卷移动操作来回写整个卷。9.8之后、分层UI可选择*恢复所有数据*或*恢复活动文件系统*。 <a href="task-managing-tiering.html#migrating-data-from-the-cloud-tier-back-to-the-performance-tier">"了解如何将数据移回性能层"</a>。</p>
+<p>回写通常在读取时执行、具体取决于分层策略类型。在ONTAP 9.8之前的版本中、可以使用_volume move"操作来回写整个卷。从ONTAP 9.8开始、分层UI可选择*恢复所有数据*或*恢复活动文件系统*。 <a href="task-managing-tiering.html#migrating-data-from-the-cloud-tier-back-to-the-performance-tier">"了解如何将数据移回性能层"</a>。</p>
 </div>
 </div>
 <div class="sect2">
@@ -1074,15 +1086,6 @@
 <h3 id="我是否可以使用云提供商的控制台或对象存储探索器查看分层到存储分层的数据是否可以在不使用ontap-的情况下直接使用存储在对象存储中的数据">我是否可以使用云提供商的控制台或对象存储探索器查看分层到存储分层的数据？是否可以在不使用ONTAP 的情况下直接使用存储在对象存储中的数据？</h3>
 <div class="paragraph">
 <p>否构建并分层到云的对象不包含单个文件、而是包含来自多个文件的多达1、024个4 KB块。卷的元数据始终保留在本地层上。</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="是否可以将策略应用于对象存储以便在不分层的情况下移动数据">是否可以将策略应用于对象存储，以便在不分层的情况下移动数据？</h3>
-<div class="paragraph">
-<p>是的。您可以启用生命周期管理，以便 Cloud Tiering 在一定天数后将数据从默认存储类 / 访问层过渡到更经济高效的层。</p>
-</div>
-<div class="paragraph">
-<p>此生命周期规则将应用于 Amazon S3 和 Google Cloud 存储的选定存储分段中的所有对象，以及 Azure Blob 的选定存储帐户中的所有容器。</p>
 </div>
 </div>
 </div>
