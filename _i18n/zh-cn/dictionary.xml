@@ -896,16 +896,12 @@
   <block id="6ddd4d2b3e22e1f0dbfa3f2cfb99611d" category="paragraph">您过去可能用于将内部ONTAP 数据分层到云的*镜像*许可证仅适用于无法访问互联网的站点(也称为"非公开站点")中的ONTAP 部署或使用FabricPool 镜像的FabricPool MetroCluster 系统。如果您使用的是这些配置、则可以使用System Manager或ONTAP 命令行界面在每个集群上安装FabricPool 许可证。</block>
   <block id="d99641589694e93765fada1790db2a0e" category="section-title">将Cloud Tiering许可证应用于特殊配置中的集群</block>
   <block id="ec4ebd20c319e970c3f59b1f47802c0b" category="list-text">分层镜像配置中的集群(连接到两个对象存储的集群)</block>
-  <block id="04b39654e6e5a443553195d1e2779190" category="list-text">分层到IBM Cloud Object Storage的集群</block>
   <block id="c8fe0ffee9071759c56b9a7d98bae676" category="section-title">具有FabricPool 许可证的现有集群的进程</block>
   <block id="1451b23352470f925dac87a3da139fca" category="inline-link-macro">在Cloud Tiering中发现任何这些特殊集群类型</block>
   <block id="f9e397eb4495d4b3c8a7097b4ea8b610" category="paragraph">当您 <block ref="20b85fbda0982633cbcc10be992f4ea5" category="inline-link-macro-rx"></block>、Cloud Tiering可识别FabricPool 许可证、并将该许可证添加到数字市场。这些集群将继续照常对数据进行分层。FabricPool 许可证过期后、您需要购买Cloud Tiering许可证。</block>
   <block id="eb5050df74a7237bec4864cad6113b55" category="section-title">新创建集群的进程</block>
   <block id="9cf61e4fc9ad253b398c1c3be905176d" category="paragraph">在Cloud Tiering中发现典型集群时、您将使用Cloud Tiering界面配置分层。在这些情况下、将执行以下操作：</block>
-  <block id="dc0f43ea8bf22779955c42555129035b" category="list-text">"父"云分层许可证可跟踪所有集群用于分层的容量、以确保许可证中有足够的容量</block>
-  <block id="c2b88dd33c3d9222a13179594b55f74e" category="list-text">每个集群都会自动安装一个"子"分层许可证、以便与Digital Wallet中的"父"许可证进行通信</block>
   <block id="5c47f5b94c062cb59e1084e7104a35ad" category="paragraph">对于上述两种配置、您需要使用System Manager或ONTAP 命令行界面(而不是使用云分层界面)配置分层。因此、在这些情况下、您需要从Cloud Tiering界面手动将"子"许可证推送到这些集群。</block>
-  <block id="6cd8bf8bc514f4f1998e5110df5d1db8" category="admonition">由于在分层镜像配置中、数据会分层到两个不同的对象存储位置、因此您需要购买具有足够容量的许可证、以便分层到这两个位置。</block>
   <block id="f457a5079118a07f91a021318abf923e" category="list-text">使用System Manager或ONTAP 命令行界面安装和配置ONTAP 集群。</block>
   <block id="a91bdb81c68f1a37a469fa1d5933a14b" category="paragraph">此时请勿配置分层。</block>
   <block id="a49fb32c3dc821374473edfc6c43950a" category="inline-link-macro">购买Cloud Tiering许可证</block>
@@ -1098,4 +1094,9 @@
   <block id="ab432a40ce280c4620566a0570350625" category="paragraph">是的。您可以启用生命周期管理，以便 Cloud Tiering 在一定天数后将数据从默认存储类 / 访问层过渡到更经济高效的层。此生命周期规则将应用于 Amazon S3 和 Google Cloud 存储的选定存储分段中的所有对象，以及 Azure Blob 的选定存储帐户中的所有容器。</block>
   <block id="864bccaf8b856c65bcec49d71eaad8e6" category="section-title">如何将我的分层数据恢复到性能层内部？</block>
   <block id="f8677b4c8b811cc562ebfa540cd716ff" category="paragraph">回写通常在读取时执行、具体取决于分层策略类型。在ONTAP 9.8之前的版本中、可以使用_volume move"操作来回写整个卷。从ONTAP 9.8开始、分层UI可选择*恢复所有数据*或*恢复活动文件系统*。 <block ref="5fc989c9b1011f539a0df96bd559f635" category="inline-link-macro-rx"></block>。</block>
+  <block id="b56c6599c26215b1aa75689a41e8233c" category="list-text">将数据分层到IBM Cloud Object Storage的集群</block>
+  <block id="2885d7c48d39d4d14b99f3f10676ffa9" category="list-text">"父"云分层许可证可跟踪所有集群用于分层的容量、以确保许可证中有足够的容量。总许可容量和到期日期显示在数字电子钱包中。</block>
+  <block id="7598b57246c073bebfc5a46a79eecdd5" category="list-text">每个集群都会自动安装"子"分层许可证、以便与"父"许可证进行通信。</block>
+  <block id="fbad6353250385bdb538aa04a8ef4983" category="admonition">System Manager或ONTAP 命令行界面中显示的"子"许可证的许可容量和到期日期不是真实信息、因此、如果信息不相同、请勿担心。这些值由Cloud Tiering软件在内部进行管理。真实信息会在"数字电子钱包"中进行跟踪。</block>
+  <block id="8646b811e05af9f8486c9225ac0c39f3" category="paragraph">请注意、由于在分层镜像配置中、数据会分层到两个不同的对象存储位置、因此您需要购买一个具有足够容量的许可证、以便将数据分层到这两个位置。</block>
 </blocks>
