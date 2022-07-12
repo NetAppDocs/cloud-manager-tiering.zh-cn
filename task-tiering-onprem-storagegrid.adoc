@@ -66,7 +66,7 @@ NOTE: Connector 和 StorageGRID 之间的通信仅用于对象存储设置。
 集群网络连接要求::
 +
 --
-* ONTAP 集群通过用户指定的端口启动与 StorageGRID 的 HTTPS 连接（此端口可在分层设置期间进行配置）。
+* ONTAP 集群通过用户指定的端口启动与StorageGRID 网关节点的HTTPS连接(此端口可在分层设置期间进行配置)。
 +
 ONTAP 可在对象存储之间读取和写入数据。对象存储永远不会启动，而只是响应。
 
@@ -155,7 +155,7 @@ S3 凭据:: 在设置 StorageGRID 分层时，您需要为云分层提供 S3 访
 
 .您需要什么？ #8217 ；将需要什么
 * https://docs.netapp.com/us-en/cloud-manager-ontap-onprem/task-discovering-ontap.html["内部工作环境"^]。
-* StorageGRID 服务器的 FQDN 以及用于 HTTPS 通信的端口。
+* StorageGRID 网关节点的FQDN以及用于HTTPS通信的端口。
 * 具有所需 S3 权限的 AWS 访问密钥。
 
 
@@ -168,7 +168,7 @@ image:screenshot_setup_tiering_onprem.png["选择内部 ONTAP 工作环境后，
 . * 选择您的提供商 * ：选择 * StorageGRID * ，然后单击 * 继续 * 。
 . 完成 * 分层设置 * 页面上的步骤：
 +
-.. * 服务器 * ：输入 StorageGRID 服务器的 FQDN ， ONTAP 与 StorageGRID 进行 HTTPS 通信时应使用的端口，以及具有所需 S3 权限的帐户的访问密钥和机密密钥。
+.. *服务器*：输入StorageGRID 网关节点的FQDN、ONTAP 与StorageGRID 进行HTTPS通信时应使用的端口、以及具有所需S3权限的帐户的访问密钥和机密密钥。
 .. * 分段 * ：添加新分段或选择以前缀 _fabric-pool_ 开头的现有分段，然后单击 * 继续 * 。
 +
 需要使用 _fabric-pool_ 前缀，因为 Connector 的 IAM 策略允许实例对使用该前缀命名的分段执行 S3 操作。例如，您可以将 S3 存储分段命名为 _fabric-pool-AFF1_ ，其中 AFF1 是集群的名称。

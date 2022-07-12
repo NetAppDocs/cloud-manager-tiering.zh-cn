@@ -136,7 +136,6 @@
   <block id="183b2a428b6d80ef4823ebe68b96c34d" category="list-text">ONTAP 9.4 或更高版本</block>
   <block id="0b9c6eef4e3d3a222eb04e910d252339" category="list-text">许可</block>
   <block id="9cda06c7df5991375adfd503e3cc7329" category="list-text">在将数据分层到 StorageGRID 时， Cloud Manager 帐户不需要 Cloud Tiering 许可证， ONTAP 集群也不需要 FabricPool 许可证。</block>
-  <block id="90f0a3a28474de656c0a9aff945622b8" category="list-text">ONTAP 集群通过用户指定的端口启动与 StorageGRID 的 HTTPS 连接（此端口可在分层设置期间进行配置）。</block>
   <block id="b00b6421202892ef9c6f947253e944b4" category="list-text">需要从连接器建立入站连接，该连接器必须位于您的内部。</block>
   <block id="3cb09efd98df836314cbd254dcf63296" category="admonition">从 ONTAP 9.5 开始，云分层支持 FlexGroup 卷。安装程序的工作方式与任何其他卷相同。</block>
   <block id="32c974abc8de44f817076a1e8eb5d4c8" category="paragraph">您需要先在 Cloud Manager 画布中创建内部 ONTAP 工作环境，然后才能开始分层冷数据。</block>
@@ -154,12 +153,10 @@
   <block id="a3049b761ff526799f3b1881932b1c8c" category="list-text">通过端口 443 与 StorageGRID 建立 HTTPS 连接</block>
   <block id="de9570886e9849852133b61caefd03b2" category="section-title">将第一个集群中的非活动数据分层到 StorageGRID</block>
   <block id="a71f0f53c9824602e78a79bc5fa52d43" category="paragraph">准备好环境后，开始对第一个集群中的非活动数据进行分层。</block>
-  <block id="d30a5cb40eea3a32f653b4e43b30bbf1" category="list-text">StorageGRID 服务器的 FQDN 以及用于 HTTPS 通信的端口。</block>
   <block id="1b8a3756b590cb811f9726f247097028" category="list-text">具有所需 S3 权限的 AWS 访问密钥。</block>
   <block id="85cd1fc1600a51fdeb99ebc5121fa64e" category="inline-image-macro">选择内部 ONTAP 工作环境后，屏幕右侧将显示设置分层选项的屏幕截图。</block>
   <block id="23d57e0aa543c12cc6f2de0e1d5a38fb" category="paragraph"><block ref="23d57e0aa543c12cc6f2de0e1d5a38fb" category="inline-image-macro-rx" type="image"></block></block>
   <block id="b9a857184ba34b2173935c63cafd8508" category="list-text">* 选择您的提供商 * ：选择 * StorageGRID * ，然后单击 * 继续 * 。</block>
-  <block id="7206fa4dd4f20feee98bcfa09c10759c" category="list-text">* 服务器 * ：输入 StorageGRID 服务器的 FQDN ， ONTAP 与 StorageGRID 进行 HTTPS 通信时应使用的端口，以及具有所需 S3 权限的帐户的访问密钥和机密密钥。</block>
   <block id="4014800981ed7ad3b1ab16a5a86574ce" category="list-text">* 分段 * ：添加新分段或选择以前缀 _fabric-pool_ 开头的现有分段，然后单击 * 继续 * 。</block>
   <block id="65baf260014f5ed41f70e43c8bae3790" category="list-text">* 集群网络 * ：选择 ONTAP 应用于连接到对象存储的 IP 空间，然后单击 * 继续 * 。</block>
   <block id="6770c476e7cf4e5329f4a574f524ae3a" category="paragraph">选择正确的 IP 空间可确保云分层可以设置从 ONTAP 到 StorageGRID 对象存储的连接。</block>
@@ -1099,4 +1096,7 @@
   <block id="7598b57246c073bebfc5a46a79eecdd5" category="list-text">每个集群都会自动安装"子"分层许可证、以便与"父"许可证进行通信。</block>
   <block id="fbad6353250385bdb538aa04a8ef4983" category="admonition">System Manager或ONTAP 命令行界面中显示的"子"许可证的许可容量和到期日期不是真实信息、因此、如果信息不相同、请勿担心。这些值由Cloud Tiering软件在内部进行管理。真实信息会在"数字电子钱包"中进行跟踪。</block>
   <block id="8646b811e05af9f8486c9225ac0c39f3" category="paragraph">请注意、由于在分层镜像配置中、数据会分层到两个不同的对象存储位置、因此您需要购买一个具有足够容量的许可证、以便将数据分层到这两个位置。</block>
+  <block id="d356e706a5a76e1d07d019ae07df9f40" category="list-text">ONTAP 集群通过用户指定的端口启动与StorageGRID 网关节点的HTTPS连接(此端口可在分层设置期间进行配置)。</block>
+  <block id="8763f6e8f73d9edf1525960ebd813b27" category="list-text">StorageGRID 网关节点的FQDN以及用于HTTPS通信的端口。</block>
+  <block id="c880a19df6feb2c1dcf1bda2267bb2be" category="list-text">*服务器*：输入StorageGRID 网关节点的FQDN、ONTAP 与StorageGRID 进行HTTPS通信时应使用的端口、以及具有所需S3权限的帐户的访问密钥和机密密钥。</block>
 </blocks>
