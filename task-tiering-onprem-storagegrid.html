@@ -258,11 +258,13 @@
           <div id="react-search" 
           data-search-html="/zh-cn/cloud-manager-tiering/search.html"
           data-type="widget" 
-          data-placeholder="搜索文档" 
-          data-no-results-found="未找到与 {query} 匹配的结果。" 
-          data-did-you-mean="搜索 {suggestion}。" 
-          data-no-results-found-did-you-mean="未找到与 {query} 匹配的结果。您是否要搜索 {suggestion}?" 
-          data-results-found="找到 {hitCount} 个结果"  
+          data-placeholder="搜索文档"
+          data-no-results-found="未找到与 {query} 匹配的结果。"
+          data-did-you-mean="搜索 {suggestion}。"
+          data-no-results-found-did-you-mean="未找到与 {query} 匹配的结果。您是否要搜索 {suggestion}?"
+          data-results-found="找到 {hitCount} 个结果"
+          data-error-message="We're sorry, an issue occurred when fetching your results. Please try again."
+          data-error-reset="Reset Search"
           data-sk-es-pf-indexes=""
           data-flavor=""></div>
           <button class="n-property-bar__search-toggle-button" type="button">
@@ -669,7 +671,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-04-18 08:18:51 +0000">04/18/2022</time>
+    <time datetime="2022-07-12 16:06:14 +0000">07/12/2022</time>
     
   
 
@@ -776,7 +778,7 @@ Connector 和 StorageGRID 之间的通信仅用于对象存储设置。
 <div class="ulist">
 <ul>
 <li>
-<p>ONTAP 集群通过用户指定的端口启动与 StorageGRID 的 HTTPS 连接（此端口可在分层设置期间进行配置）。</p>
+<p>ONTAP 集群通过用户指定的端口启动与StorageGRID 网关节点的HTTPS连接(此端口可在分层设置期间进行配置)。</p>
 <div class="paragraph">
 <p>ONTAP 可在对象存储之间读取和写入数据。对象存储永远不会启动，而只是响应。</p>
 </div>
@@ -926,7 +928,7 @@ Connector 和 StorageGRID 之间的通信仅用于对象存储设置。
 <p><a href="https://docs.netapp.com/us-en/cloud-manager-ontap-onprem/task-discovering-ontap.html" target="_blank" rel="noopener">"内部工作环境"</a>。</p>
 </li>
 <li>
-<p>StorageGRID 服务器的 FQDN 以及用于 HTTPS 通信的端口。</p>
+<p>StorageGRID 网关节点的FQDN以及用于HTTPS通信的端口。</p>
 </li>
 <li>
 <p>具有所需 S3 权限的 AWS 访问密钥。</p>
@@ -953,7 +955,7 @@ Connector 和 StorageGRID 之间的通信仅用于对象存储设置。
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>* 服务器 * ：输入 StorageGRID 服务器的 FQDN ， ONTAP 与 StorageGRID 进行 HTTPS 通信时应使用的端口，以及具有所需 S3 权限的帐户的访问密钥和机密密钥。</p>
+<p><strong>服务器</strong>：输入StorageGRID 网关节点的FQDN、ONTAP 与StorageGRID 进行HTTPS通信时应使用的端口、以及具有所需S3权限的帐户的访问密钥和机密密钥。</p>
 </li>
 <li>
 <p>* 分段 * ：添加新分段或选择以前缀 <em>fabric-pool</em> 开头的现有分段，然后单击 * 继续 * 。</p>
